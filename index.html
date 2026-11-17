@@ -1,55 +1,46 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080f20">
+<meta name="google-site-verification" content="vdTSlWyolRsGCWy1gc_8glOuSz7NFiOBYA--8tGNGOU">
 <title>NOVA MATH PRO | امیرعباس محمدی</title>
 
 <style>
 :root{
- --bg:#080f20;
- --panel:#111c33;
- --panel2:#192842;
- --text:#f2f6ff;
- --muted:#91a2bd;
- --accent:#21d4c2;
- --accent2:#36a7ff;
- --border:#344765;
- --success:#32d6a0;
- --danger:#ff6b85;
+ --bg:#080f20;--panel:#111c33;--panel2:#192842;
+ --text:#f2f6ff;--muted:#91a2bd;--accent:#21d4c2;
+ --accent2:#36a7ff;--border:#344765;
+ --success:#32d6a0;--danger:#ff6b85;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
 body{
  margin:0;min-height:100vh;
- background:
- radial-gradient(circle at 5% 50%,#29205b55,transparent 35%),
- radial-gradient(circle at 95% 55%,#087d7130,transparent 35%),
- var(--bg);
- color:var(--text);
- font-family:Tahoma,Arial,sans-serif;
- transition:background .3s;
+ background:radial-gradient(circle at 5% 50%,#29205b55,transparent 35%),
+ radial-gradient(circle at 95% 55%,#087d7130,transparent 35%),var(--bg);
+ color:var(--text);font-family:Tahoma,Arial,sans-serif;transition:background .3s;
 }
 button,input{font-family:inherit}
 header{
- height:65px;background:var(--panel);
- border-bottom:1px solid var(--border);
+ min-height:65px;background:var(--panel);border-bottom:1px solid var(--border);
  display:flex;align-items:center;justify-content:space-between;
- padding:0 6%;position:sticky;top:0;z-index:20;
+ gap:12px;padding:10px 6%;position:sticky;top:0;z-index:20;
 }
 .logo{display:flex;align-items:center;gap:10px;direction:ltr;font-weight:900;font-size:19px}
 .logo span{color:var(--accent)}
 .logo-icon{
- width:38px;height:38px;border-radius:12px;
- display:grid;place-items:center;
- background:linear-gradient(135deg,var(--accent),var(--accent2));
- color:#071525;font-size:21px;
+ width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+ background:linear-gradient(135deg,var(--accent),var(--accent2));color:#071525;font-size:21px;
 }
-.creator{
- background:var(--panel2);color:var(--accent);
- padding:9px 13px;border-radius:30px;font-size:11px;font-weight:bold;
+.creator{background:var(--panel2);color:var(--accent);padding:9px 13px;border-radius:30px;font-size:11px;font-weight:bold}
+.nav-links{display:flex;gap:8px;flex-wrap:wrap}
+.nav-links a{
+ color:var(--text);text-decoration:none;font-size:11px;padding:9px 12px;
+ border:1px solid var(--border);border-radius:10px;background:var(--panel2);
 }
+.nav-links a:hover{border-color:var(--accent);color:var(--accent)}
 .container{max-width:1250px;margin:auto;padding:32px 22px 55px}
 .hero{text-align:center;margin-bottom:30px}
 .hero-icon{font-size:42px;margin-bottom:10px}
@@ -57,88 +48,49 @@ header{
 .hero h1 span{color:var(--accent)}
 .hero p{color:var(--muted);font-size:12px;line-height:2.2}
 .workspace{
- display:grid;
- grid-template-columns:minmax(300px,.85fr) minmax(400px,1.15fr);
+ display:grid;grid-template-columns:minmax(300px,.85fr) minmax(400px,1.15fr);
  gap:18px;align-items:stretch;
 }
-.theme-panel,.main-panel{
+.theme-panel,.main-panel,.learning-section{
  background:var(--panel);border:1px solid var(--border);
- border-radius:20px;padding:20px;min-width:0;
- box-shadow:0 15px 45px #0002;
+ border-radius:20px;padding:20px;min-width:0;box-shadow:0 15px 45px #0002;
 }
 .theme-panel{display:flex;flex-direction:column}
 .panel-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .panel-heading h3{font-size:17px;margin:0}
 .panel-heading .icon{
- width:35px;height:35px;border-radius:10px;
- display:grid;place-items:center;background:var(--panel2);
+ width:35px;height:35px;border-radius:10px;display:grid;
+ place-items:center;background:var(--panel2);
 }
 .panel-description{color:var(--muted);font-size:11px;line-height:2;margin:10px 0 16px}
-
-/* Theme cards with illustrations */
-
 .theme-grid{
- display:grid;
- grid-template-columns:repeat(2,minmax(0,1fr));
- gap:10px;
- max-height:460px;
- overflow-y:auto;
- padding:4px;
- scrollbar-width:thin;
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;
+ max-height:460px;overflow-y:auto;padding:4px;scrollbar-width:thin;
  scrollbar-color:var(--accent) var(--panel2);
 }
 .theme-option{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:9px;
- min-height:76px;
- padding:8px;
- background:var(--panel2);
- border:1px solid var(--border);
- border-radius:13px;
- color:var(--text);
- cursor:pointer;
- font-size:11px;
- font-weight:bold;
- transition:.22s;
- text-align:right;
+ display:flex;align-items:center;justify-content:space-between;gap:9px;
+ min-height:76px;padding:8px;background:var(--panel2);
+ border:1px solid var(--border);border-radius:13px;color:var(--text);
+ cursor:pointer;font-size:11px;font-weight:bold;transition:.22s;text-align:right;
 }
-.theme-option:hover{
- border-color:var(--accent);
- transform:translateY(-3px);
-}
+.theme-option:hover{border-color:var(--accent);transform:translateY(-3px)}
 .theme-option.active{
  border:1px solid var(--accent);
  box-shadow:0 0 15px color-mix(in srgb,var(--accent) 35%,transparent);
  background:color-mix(in srgb,var(--accent) 10%,var(--panel2));
 }
-.theme-info{
- display:flex;
- align-items:center;
- gap:7px;
- min-width:0;
-}
+.theme-info{display:flex;align-items:center;gap:7px;min-width:0}
 .theme-name{line-height:1.8}
 .theme-art{
- width:53px;
- height:53px;
- min-width:53px;
- border-radius:11px;
- overflow:hidden;
- display:grid;
- place-items:center;
- border:1px solid #ffffff25;
+ width:53px;height:53px;min-width:53px;border-radius:11px;
+ overflow:hidden;display:grid;place-items:center;border:1px solid #ffffff25;
 }
-.theme-art svg{width:100%;height:100%;display:block}
+.theme-art img{width:100%;height:100%;object-fit:cover}
 .theme-footer{
- border-top:1px solid var(--border);
- padding-top:12px;margin-top:auto;
+ border-top:1px solid var(--border);padding-top:12px;margin-top:auto;
  color:var(--muted);font-size:10px;text-align:center;
 }
-
-/* Main panel */
-
 .main-panel{padding:23px}
 .section-title{display:flex;align-items:center;gap:10px;font-size:17px;margin:0 0 10px}
 .section-title .icon{
@@ -148,26 +100,26 @@ header{
 .description{color:var(--muted);font-size:11px;line-height:2;margin-bottom:25px}
 .field-label{display:block;font-size:12px;font-weight:bold;margin-bottom:12px}
 .number-input{
- width:100%;padding:17px;border-radius:12px;
- background:var(--panel2);border:1px solid var(--border);
- color:var(--text);font-size:17px;outline:none;transition:.2s;
+ width:100%;padding:17px;border-radius:12px;background:var(--panel2);
+ border:1px solid var(--border);color:var(--text);font-size:17px;outline:none;transition:.2s;
 }
-.number-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 15%,transparent)}
+.number-input:focus{
+ border-color:var(--accent);
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 15%,transparent);
+}
 .number-input::placeholder{color:var(--muted)}
 .hint{color:var(--muted);font-size:10px;margin-top:10px}
 .options-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:30px 0 14px}
 .options-heading h3{font-size:13px}
 .text-btn{
  background:var(--panel2);border:1px solid var(--border);
- border-radius:9px;color:var(--text);padding:8px 11px;
- font-size:10px;cursor:pointer;
+ border-radius:9px;color:var(--text);padding:8px 11px;font-size:10px;cursor:pointer;
 }
 .options-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
 .option{
- min-height:54px;display:flex;align-items:center;
- justify-content:space-between;gap:8px;padding:11px;
- background:var(--panel2);border:1px solid var(--border);
- border-radius:12px;cursor:pointer;transition:.2s;
+ min-height:54px;display:flex;align-items:center;justify-content:space-between;
+ gap:8px;padding:11px;background:var(--panel2);
+ border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:.2s;
 }
 .option:hover{border-color:var(--accent);transform:translateY(-2px)}
 .option.selected{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--panel2))}
@@ -175,39 +127,25 @@ header{
 .option input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
 .actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
 .btn{
- background:var(--panel2);border:1px solid var(--border);
- border-radius:10px;padding:12px 14px;color:var(--text);
- font-size:11px;font-weight:bold;cursor:pointer;transition:.2s;
+ background:var(--panel2);border:1px solid var(--border);border-radius:10px;
+ padding:12px 14px;color:var(--text);font-size:11px;font-weight:bold;cursor:pointer;transition:.2s;
 }
 .btn:hover{transform:translateY(-2px);filter:brightness(1.2)}
-.btn.primary{
- background:linear-gradient(110deg,var(--accent),var(--accent2));
- color:#071725;border:0;
-}
+.btn.primary{background:linear-gradient(110deg,var(--accent),var(--accent2));color:#071725;border:0}
 .error{color:var(--danger);font-size:11px;margin-top:12px;min-height:17px}
-
-/* Results */
-
 .results{display:none;margin-top:28px}
 .results.show{display:block;animation:appear .4s ease}
-@keyframes appear{
- from{opacity:0;transform:translateY(12px)}
- to{opacity:1;transform:translateY(0)}
-}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .results-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:15px}
 .results-header h2{font-size:17px}
 .result-number{
- display:flex;align-items:center;gap:12px;
- background:var(--panel2);border:1px solid var(--border);
- border-radius:12px;padding:15px;margin-bottom:14px;
+ display:flex;align-items:center;gap:12px;background:var(--panel2);
+ border:1px solid var(--border);border-radius:12px;padding:15px;margin-bottom:14px;
 }
 .result-number span{color:var(--muted);font-size:11px}
 .result-number strong{color:var(--accent);font-size:24px;direction:ltr}
 .results-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.result-card{
- background:var(--panel2);border:1px solid var(--border);
- border-radius:13px;padding:15px;min-width:0;
-}
+.result-card{background:var(--panel2);border:1px solid var(--border);border-radius:13px;padding:15px;min-width:0}
 .result-card h4{color:var(--accent);font-size:12px;margin:0 0 12px}
 .result-card p{font-size:11px;line-height:2.2;margin:0;overflow-wrap:anywhere}
 .result-card.full{grid-column:1/-1}
@@ -215,30 +153,76 @@ header{
 .ltr{direction:ltr;text-align:right;line-height:2.5}
 .good{color:var(--success)}
 .bad{color:var(--danger)}
+
+/* بخش آموزش */
+.learning-section{margin-top:22px;padding:24px}
+.learning-intro{text-align:center;margin-bottom:22px}
+.learning-intro .book-icon{font-size:35px}
+.learning-intro h2{font-size:22px;margin:8px 0;color:var(--accent)}
+.learning-intro p{
+ font-size:12px;line-height:2.2;color:var(--muted);
+ max-width:720px;margin:0 auto;
+}
+.lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lesson{background:var(--panel2);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.lesson summary{
+ list-style:none;cursor:pointer;padding:15px;display:flex;
+ align-items:center;justify-content:space-between;gap:10px;font-size:12px;font-weight:bold;
+}
+.lesson summary::-webkit-details-marker{display:none}
+.lesson summary:after{content:"＋";color:var(--accent);font-size:18px}
+.lesson[open] summary:after{content:"−"}
+.lesson summary:hover{color:var(--accent)}
+.lesson-number{
+ display:inline-grid;place-items:center;width:30px;height:30px;
+ min-width:30px;border-radius:9px;background:color-mix(in srgb,var(--accent) 15%,var(--panel));
+ color:var(--accent);margin-left:8px;
+}
+.lesson-content{border-top:1px solid var(--border);padding:15px;font-size:11px;line-height:2.3;color:var(--text)}
+.lesson-content h4{color:var(--accent);font-size:11px;margin:13px 0 4px}
+.lesson-content h4:first-child{margin-top:0}
+.lesson-content p{margin:4px 0 10px;color:var(--muted)}
+.example{
+ background:var(--panel);border:1px solid var(--border);border-radius:10px;
+ padding:10px;margin:8px 0;text-align:center;font-weight:bold;color:var(--accent);direction:ltr;
+}
+.python-note{
+ border-right:3px solid var(--accent2);padding:8px 11px;
+ background:color-mix(in srgb,var(--accent2) 8%,var(--panel));
+ border-radius:8px;margin-top:8px;
+}
+.learning-tip{
+ margin-top:18px;padding:14px;border-radius:12px;
+ background:color-mix(in srgb,var(--accent) 9%,var(--panel2));
+ border:1px solid color-mix(in srgb,var(--accent) 30%,var(--border));
+ font-size:11px;line-height:2.2;color:var(--muted);
+}
+.learning-tip strong{color:var(--accent)}
 footer{text-align:center;color:var(--muted);font-size:11px;line-height:2.5;padding:30px 10px}
 footer strong{color:var(--accent)}
-
-@media(max-width:850px){
- .workspace{grid-template-columns:1fr}
- .theme-grid{max-height:360px}
-}
-@media(max-width:500px){
- header{padding:0 12px}
+@media(max-width:850px){.workspace{grid-template-columns:1fr}.theme-grid{max-height:360px}}
+@media(max-width:600px){
+ header{padding:10px 12px;flex-wrap:wrap}
+ .nav-links{order:3;width:100%;justify-content:center}
+ .nav-links a{flex:1;text-align:center}
  .creator{display:none}
  .container{padding:20px 11px}
- .main-panel,.theme-panel{padding:15px}
- .options-grid,.results-grid{grid-template-columns:1fr}
+ .main-panel,.theme-panel,.learning-section{padding:15px}
+ .options-grid,.results-grid,.lesson-grid{grid-template-columns:1fr}
  .result-card.full{grid-column:auto}
  .theme-grid{max-height:330px}
+ .logo{font-size:16px}
 }
 </style>
-    <meta name="google-site-verification" content="vdTSlWyolRsGCWy1gc_8glOuSz7NFiOBYA--8tGNGOU" />
 </head>
 
 <body>
-
 <header>
  <div class="creator">سازنده: امیرعباس محمدی</div>
+ <nav class="nav-links">
+  <a href="#analyzer">محاسبه‌گر</a>
+  <a href="#learning">آموزش عملیات</a>
+ </nav>
  <div class="logo">
   <div class="logo-icon">N</div>
   <div>NOVA <span>MATH PRO</span></div>
@@ -246,54 +230,28 @@ footer strong{color:var(--accent)}
 </header>
 
 <main class="container">
-
  <section class="hero">
   <div class="hero-icon">🧠</div>
   <h1>NOVA <span>MATH PRO</span></h1>
-  <p>
-   سیستم هوشمند تحلیل و بررسی ویژگی‌های ریاضی اعداد
-   <br>
-   قدرت ریاضی را با یک کلیک تجربه کنید.
-  </p>
+  <p>سیستم هوشمند تحلیل و بررسی ویژگی‌های ریاضی اعداد<br>قدرت ریاضی را با یک کلیک تجربه کنید.</p>
  </section>
 
- <div class="workspace">
-
-  <!-- THEME PANEL -->
-
+ <div class="workspace" id="analyzer">
   <aside class="theme-panel">
    <div class="panel-heading">
     <h3>انتخاب تم گرافیکی</h3>
     <div class="icon">🎨</div>
    </div>
-
    <p class="panel-description">ظاهر موردعلاقه خود را انتخاب کنید.</p>
-
    <div class="theme-grid" id="themes"></div>
-
-   <div class="theme-footer">
-    ۳۰ تم تصویری اختصاصی برای NOVA MATH
-   </div>
+   <div class="theme-footer">۳۰ تم تصویری اختصاصی برای NOVA MATH</div>
   </aside>
 
-  <!-- ANALYZER -->
-
   <section class="main-panel">
-
-   <h2 class="section-title">
-    <span class="icon">🔢</span>
-    تحلیل‌گر هوشمند اعداد
-   </h2>
-
-   <p class="description">
-    یک عدد صحیح وارد کنید و محاسبات موردنظر خود را انتخاب کنید.
-   </p>
-
+   <h2 class="section-title"><span class="icon">🔢</span>تحلیل‌گر هوشمند اعداد</h2>
+   <p class="description">یک عدد صحیح وارد کنید و محاسبات موردنظر خود را انتخاب کنید.</p>
    <label class="field-label" for="numberInput">عدد موردنظر شما</label>
-
-   <input type="number" id="numberInput" class="number-input"
-    step="1" placeholder="مثلاً عدد 24 را وارد کنید...">
-
+   <input type="number" id="numberInput" class="number-input" step="1" placeholder="مثلاً عدد 24 را وارد کنید...">
    <div class="hint">محدوده مجاز: اعداد صحیح مثبت و منفی</div>
 
    <div class="options-heading">
@@ -302,7 +260,6 @@ footer strong{color:var(--accent)}
    </div>
 
    <div class="options-grid" id="options">
-
     <label class="option"><span>تشخیص عدد اول یا مرکب</span><input type="checkbox" value="prime"></label>
     <label class="option"><span>تشخیص زوج یا فرد</span><input type="checkbox" value="even"></label>
     <label class="option"><span>شمارنده‌های مثبت</span><input type="checkbox" value="divisors"></label>
@@ -313,7 +270,6 @@ footer strong{color:var(--accent)}
     <label class="option"><span>ده مضرب اول</span><input type="checkbox" value="multiples"></label>
     <label class="option"><span>بررسی بخش‌پذیری</span><input type="checkbox" value="divisibility"></label>
     <label class="option"><span>تشخیص مربع کامل</span><input type="checkbox" value="perfect"></label>
-
    </div>
 
    <div class="actions">
@@ -321,512 +277,405 @@ footer strong{color:var(--accent)}
     <button class="btn" id="clearSelection">پاک کردن انتخاب‌ها</button>
     <button class="btn" id="clearResults">پاک کردن نتایج</button>
    </div>
-
-   <div class="error" id="error"></div>
+   <div class="error" id="error" role="status"></div>
 
    <section class="results" id="results">
     <div class="results-header">
      <h2>📊 نتایج تحلیل عدد</h2>
      <button class="btn" id="copyResults">کپی نتایج</button>
     </div>
-
-    <div class="result-number">
-     <span>عدد بررسی‌شده:</span>
-     <strong id="analyzedNumber">0</strong>
-    </div>
-
+    <div class="result-number"><span>عدد بررسی‌شده:</span><strong id="analyzedNumber">0</strong></div>
     <div class="results-grid" id="resultsGrid"></div>
    </section>
-
   </section>
  </div>
+
+ <!-- بخش جدید آموزش -->
+ <section class="learning-section" id="learning">
+  <div class="learning-intro">
+   <div class="book-icon">📚</div>
+   <h2>آموزش و روش محاسبه عملیات ریاضی</h2>
+   <p>در این قسمت با هر ۱۰ عملیات سایت آشنا می‌شوید. برای هرکدام، روش حل در ریاضی، یک مثال ساده و توضیح کوتاهی از کاری که برنامه انجام می‌دهد نوشته شده است. روی عنوان هر درس بزنید تا توضیحات آن باز شود.</p>
+  </div>
+
+  <div class="lesson-grid">
+
+   <details class="lesson">
+    <summary><span><span class="lesson-number">۱</span>تشخیص عدد اول یا مرکب</span></summary>
+    <div class="lesson-content">
+     <h4>در ریاضی و دنیای واقعی</h4>
+     <p>برای تشخیص عدد اول، بررسی می‌کنیم که عدد فقط بر ۱ و خودش بخش‌پذیر باشد. اگر به عددهای دیگری هم بدون باقی‌مانده تقسیم شود، مرکب است. عدد ۱ نه اول است و نه مرکب.</p>
+     <div class="example">۷ عدد اول است؛ ۱۲ عدد مرکب است.</div>
+     <h4>پایتون در سایت چه کار می‌کند؟</h4>
+     <p>برنامه چند عدد را برای تقسیم امتحان می‌کند. اگر یکی از آن‌ها عدد را بدون باقی‌مانده تقسیم کند، عدد مرکب است؛ اگر هیچ‌کدام نتوانند، عدد اول است.</p>
+     <div class="python-note">یعنی پایتون همان روش تقسیم و بررسی شمارنده‌ها را با سرعت زیاد انجام می‌دهد.</div>
+    </div>
+   </details>
+
+   <details class="lesson">
+    <summary><span><span class="lesson-number">۲</span>تشخیص زوج یا فرد</span></summary>
+    <div class="lesson-content">
+     <h4>در ریاضی و دنیای واقعی</h4>
+     <p>اگر بتوانیم یک تعداد وسیله را دوتادوتا و بدون باقی ماندن وسیله‌ای جفت کنیم، تعداد آن‌ها زوج است. اگر یکی باقی بماند، تعداد فرد است.</p>
+     <div class="example">۸ ÷ ۲ = ۴، پس ۸ زوج است. ۹ فرد است.</div>
+     <h4>پایتون در سایت چه کار می‌کند؟</h4>
+     <p>برنامه عدد را بر ۲ تقسیم می‌کند و باقی‌مانده را می‌سنجد. باقی‌مانده صفر یعنی زوج و باقی‌مانده یک یعنی فرد.</p>
+    </div>
+   </details>
+
+   <details class="lesson">
+    <summary><span><span class="lesson-number">۳</span>پیدا کردن شمارنده‌های مثبت</span></summary>
+    <div class="lesson-content">
+     <h4>در ریاضی و دنیای واقعی</h4>
+     <p>شمارنده‌های یک عدد، عددهایی هستند که آن عدد بر آن‌ها بدون باقی‌مانده تقسیم می‌شود. برای نمونه، می‌توان ۱۲ وسیله را به گروه‌هایی با اندازه ۱، ۲، ۳، ۴، ۶ یا ۱۲ تقسیم کرد.</p>
+     <div class="example">شمارنده‌های ۱۲: ۱، ۲، ۳، ۴، ۶ و ۱۲</div>
+     <h4>پایتون در سایت چه کار می‌کند؟</h4>
+     <p>برنامه عددهای مثبت را یکی‌یکی امتحان می‌کند و هر عددی را که تقسیم را بدون باقی‌مانده انجام دهد، در فهرست می‌گذارد.</p>
+    </div>
+   </details>
+
+   <details class="lesson">
+    <summary><span><span class="lesson-number">۴</span>محاسبه توان دوم</span></summary>
+    <div class="lesson-content">
+     <h4>در ریاضی و دنیای واقعی</h4>
+     <p>توان دوم یعنی یک عدد را در خودش ضرب کنیم. این مفهوم در محاسبه مساحت مربع هم دیده می‌شود؛ چون مساحت مربع از ضرب طول یک ضلع در خودش به دست می‌آید.</p>
+     <div class="example">۵² = ۵ × ۵ = ۲۵</div>
+     <h4>پایتون در سایت چه کار می‌کند؟</h4>
+     <p>برنامه عدد واردشده را در خودش ضرب می‌کند و حاصل را نمایش می‌دهد.</p>
+    </div>
+   </details>
+
+   <details class="lesson">
+    <summary><span><span class="lesson-number">۵</span>محاسبه جذر تقریبی</span></summary>
+    <div class="lesson-content">
+     <h4>در ریاضی و دنیای واقعی</h4>
+     <p>جذر یک عدد یعنی پیدا کردن عددی که اگر در خودش ضرب شود، عدد اصلی به دست بیاید. مثلاً جذر ۳۶ برابر ۶ است. بعضی عددها مثل ۱۰ جذر صحیح و ساده ندارند و جواب آن‌ها تقریبی است.</p>
+     <div class="example">√۳۶ = ۶ و √۱۰ ≈ ۳٫۱۶</div>
+     <h4>پایتون در سایت چه کار می‌کند؟</h4>
+     <p>برنامه از قابلیت ریاضی جاوااسکریپت برای محاسبه جذر استفاده می‌کند و جواب را نمایش می‌دهد. برای عدد منفی، جذر در مجموعه اعداد حقیقی تعریف نشده است.</p>
+    </div>
+   </details>
+
+   <details class="lesson">
+    <summary><span><span class="lesson-number">۶</span>محاسبه مجموع رقم‌ها</span></summary>
+    <div class="lesson-content">
+     <h4>در ریاضی و دنیای واقعی</h4>
+     <p>رقم‌های یک عدد را از هم جدا می‌کنیم و با هم جمع می‌زنیم. این کار برای تمرین جمع ذهنی و بعضی روش‌های بررسی عددها کاربرد دارد.</p>
+     <div class="example">۲۵۸ ← ۲ + ۵ + ۸ = ۱۵</div>
+     <h4>پایتون در سایت چه کار می‌کند؟</h4>
+     <p>برنامه رقم‌های عدد را جداگانه می‌خواند، آن‌ها را به عدد تبدیل می‌کند و همه را با هم جمع می‌زند. علامت منفی در این جمع حساب نمی‌شود.</p>
+    </div>
+   </details>
+
+   <details class="lesson">
+    <summary><span><span class="lesson-number">۷</span>تشخیص علامت عدد</span></summary>
+    <div class="lesson-content">
+     <h4>در ریاضی و دنیای واقعی</h4>
+     <p>عددهای بزرگ‌تر از صفر مثبت‌اند، عددهای کوچک‌تر از صفر منفی‌اند و خود صفر نه مثبت است و نه منفی. برای مثال، دمای ۵ درجه بالای صفر مثبت و ۵ درجه زیر صفر منفی است.</p>
+     <div class="example">۵ مثبت است؛ ۵- منفی است؛ ۰ صفر است.</div>
+     <h4>پایتون در سایت چه کار می‌کند؟</h4>
+     <p>برنامه عدد را با صفر مقایسه می‌کند و مشخص می‌کند که مثبت، منفی یا برابر صفر است.</p>
+    </div>
+   </details>
+
+   <details class="lesson">
+    <summary><span><span class="lesson-number">۸</span>پیدا کردن ده مضرب اول</span></summary>
+    <div class="lesson-content">
+     <h4>در ریاضی و دنیای واقعی</h4>
+     <p>مضرب‌های یک عدد با ضرب آن در عددهای طبیعی به دست می‌آیند. مثلاً وقتی بسته‌های ۳تایی داریم، تعداد کل می‌تواند ۳، ۶، ۹ و ... باشد.</p>
+     <div class="example">ده مضرب اول ۳: ۳، ۶، ۹، ۱۲، ۱۵، ۱۸، ۲۱، ۲۴، ۲۷، ۳۰</div>
+     <h4>پایتون در سایت چه کار می‌کند؟</h4>
+     <p>برنامه عدد واردشده را به ترتیب در ۱ تا ۱۰ ضرب می‌کند و نتیجه‌ها را پشت سر هم نشان می‌دهد.</p>
+    </div>
+   </details>
+
+   <details class="lesson">
+    <summary><span><span class="lesson-number">۹</span>بررسی بخش‌پذیری</span></summary>
+    <div class="lesson-content">
+     <h4>در ریاضی و دنیای واقعی</h4>
+     <p>وقتی یک عدد بر عدد دیگر تقسیم شود و باقی‌مانده نداشته باشد، می‌گوییم بخش‌پذیر است. مثلاً ۲۴ را می‌توان بدون باقی‌مانده بین ۶ گروه تقسیم کرد.</p>
+     <div class="example">۲۴ ÷ ۶ = ۴، پس ۲۴ بر ۶ بخش‌پذیر است.</div>
+     <h4>پایتون در سایت چه کار می‌کند؟</h4>
+     <p>برنامه باقی‌مانده تقسیم عدد را بر عددهای ۲ تا ۱۰ بررسی می‌کند و نتیجه هرکدام را جداگانه نشان می‌دهد.</p>
+    </div>
+   </details>
+
+   <details class="lesson">
+    <summary><span><span class="lesson-number">۱۰</span>تشخیص مربع کامل</span></summary>
+    <div class="lesson-content">
+     <h4>در ریاضی و دنیای واقعی</h4>
+     <p>مربع کامل عددی است که از ضرب یک عدد صحیح در خودش به دست بیاید. مثلاً می‌توان ۴۹ نقطه را به شکل مربعی با ۷ ردیف و ۷ ستون چید.</p>
+     <div class="example">۴۹ = ۷ × ۷، پس ۴۹ مربع کامل است.</div>
+     <h4>پایتون در سایت چه کار می‌کند؟</h4>
+     <p>برنامه جذر عدد را به دست می‌آورد و بررسی می‌کند که آیا جواب یک عدد صحیح است یا نه. اگر چنین باشد، عدد مربع کامل است.</p>
+    </div>
+   </details>
+
+  </div>
+
+  <div class="learning-tip">
+   <strong> </strong>
+   
+  </div>
+ </section>
 </main>
 
 <footer>
- طراحی و توسعه اختصاصی توسط <strong>امیرعباس محمدی</strong>
- <br>
- NOVA MATH PRO © 2026
- <br>
+ طراحی و توسعه اختصاصی توسط <strong>امیرعباس محمدی</strong><br>
+ NOVA MATH PRO © 2026<br>
  SMART NUMBER ANALYZER
 </footer>
 
 <script>
-
-/* ===================================
-   THEME DATA
-   Each theme has its own illustration
-=================================== */
-
-const themes = [
- ["مینیمال","#17191e","#252932","#333945","#d1d5db","#94a3b8","◈"],
- ["قرمز","#240c12","#40151f","#581d2b","#ef4444","#fb7185","🔥"],
- ["زمرد","#05231e","#0b3b31","#125344","#34d399","#2dd4bf","💎"],
- ["آسمانی","#101a35","#1b2c50","#273b65","#60a5fa","#818cf8","☁️"],
- ["صورتی","#250e24","#42183e","#5b2254","#e879f9","#f0abfc","🌸"],
- ["شکلاتی","#21140e","#39251b","#513629","#d6a06d","#f0b98a","🍫"],
- ["روشن","#edf2f7","#ffffff","#e2e8f0","#4f46e5","#0891b2","☀️"],
- ["سایبر","#050b14","#101e2d","#173247","#00ff9c","#00d9ff","⚡"],
- ["لاجوردی","#0b1230","#18234b","#243365","#818cf8","#38bdf8","🔷"],
- ["خاکستری","#17191e","#252932","#333945","#94a3b8","#64748b","🏙️"],
- ["کهکشانی","#10091e","#21133b","#30204e","#a78bfa","#e879f9","🌌"],
- ["آتش","#200b08","#3d1710","#562319","#fb923c","#ef4444","🔥"],
- ["اقیانوس","#071b2c","#0c3047","#12415a","#00b4d8","#48cae4","🌊"],
- ["طلایی","#21190b","#392b12","#4d3918","#fbbf24","#f59e0b","👑"],
- ["جنگل","#071c16","#103126","#194335","#10b981","#34d399","🌲"],
- ["یخی","#101d2c","#1b3045","#29445c","#38bdf8","#67e8f9","❄️"],
- ["رز","#260d1d","#40162f","#55203e","#f472b6","#fb7185","🌹"],
- ["نئون","#080d1b","#111a2e","#19243c","#8b5cf6","#06b6d4","💡"],
- ["مسی","#21130f","#39221b","#503027","#fb923c","#fdba74","🪙"],
- ["آرکید","#17082a","#291044","#40165e","#f0abfc","#c084fc","👾"],
- ["زمستان","#0b1725","#172a40","#203c57","#93c5fd","#e0f2fe","🏔️"],
- ["یاقوتی","#220b16","#3c1425","#541b34","#fb7185","#fda4af","💠"],
- ["طلوع","#27120b","#452117","#60301d","#fbbf24","#fb923c","🌅"],
- ["آبی سلطنتی","#0a1534","#142750","#1e3970","#6366f1","#38bdf8","🏰"],
- ["سبز نعنایی","#10231f","#183a32","#245247","#6ee7b7","#a7f3d0","🍃"],
- ["کربنی","#101216","#20242a","#30363f","#d1d5db","#9ca3af","⚙️"],
- ["نئون سبز","#07140e","#10271b","#183c29","#4ade80","#a3e635","🧪"],
- ["آسمان شب","#090d22","#151b3c","#222b53","#818cf8","#38bdf8","🌙"],
- ["نارنجی","#25140a","#3e2411","#57351b","#fb923c","#fbbf24","🍊"],
- ["چندجهانی","#100b20","#211638","#30204c","#f472b6","#22d3ee","🪐"]
-].map(t=>({
- name:t[0],bg:t[1],panel:t[2],panel2:t[3],
- accent:t[4],accent2:t[5],art:t[6]
-}));
-
-/* Create a separate SVG illustration for every theme */
+const themes=[
+["مینیمال","#17191e","#252932","#333945","#d1d5db","#94a3b8","◈"],
+["قرمز","#240c12","#40151f","#581d2b","#ef4444","#fb7185","🔥"],
+["زمرد","#05231e","#0b3b31","#125344","#34d399","#2dd4bf","💎"],
+["آسمانی","#101a35","#1b2c50","#273b65","#60a5fa","#818cf8","☁️"],
+["صورتی","#250e24","#42183e","#5b2254","#e879f9","#f0abfc","🌸"],
+["شکلاتی","#21140e","#39251b","#513629","#d6a06d","#f0b98a","🍫"],
+["روشن","#edf2f7","#ffffff","#e2e8f0","#4f46e5","#0891b2","☀️"],
+["سایبر","#050b14","#101e2d","#173247","#00ff9c","#00d9ff","⚡"],
+["لاجوردی","#0b1230","#18234b","#243365","#818cf8","#38bdf8","🔷"],
+["خاکستری","#17191e","#252932","#333945","#94a3b8","#64748b","🏙️"],
+["کهکشانی","#10091e","#21133b","#30204e","#a78bfa","#e879f9","🌌"],
+["آتش","#200b08","#3d1710","#562319","#fb923c","#ef4444","🔥"],
+["اقیانوس","#071b2c","#0c3047","#12415a","#00b4d8","#48cae4","🌊"],
+["طلایی","#21190b","#392b12","#4d3918","#fbbf24","#f59e0b","👑"],
+["جنگل","#071c16","#103126","#194335","#10b981","#34d399","🌲"],
+["یخی","#101d2c","#1b3045","#29445c","#38bdf8","#67e8f9","❄️"],
+["رز","#260d1d","#40162f","#55203e","#f472b6","#fb7185","🌹"],
+["نئون","#080d1b","#111a2e","#19243c","#8b5cf6","#06b6d4","💡"],
+["مسی","#21130f","#39221b","#503027","#fb923c","#fdba74","🪙"],
+["آرکید","#17082a","#291044","#40165e","#f0abfc","#c084fc","👾"],
+["زمستان","#0b1725","#172a40","#203c57","#93c5fd","#e0f2fe","🏔️"],
+["یاقوتی","#220b16","#3c1425","#541b34","#fb7185","#fda4af","💠"],
+["طلوع","#27120b","#452117","#60301d","#fbbf24","#fb923c","🌅"],
+["آبی سلطنتی","#0a1534","#142750","#1e3970","#6366f1","#38bdf8","🏰"],
+["سبز نعنایی","#10231f","#183a32","#245247","#6ee7b7","#a7f3d0","🍃"],
+["کربنی","#101216","#20242a","#30363f","#d1d5db","#9ca3af","⚙️"],
+["نئون سبز","#07140e","#10271b","#183c29","#4ade80","#a3e635","🧪"],
+["آسمان شب","#090d22","#151b3c","#222b53","#818cf8","#38bdf8","🌙"],
+["نارنجی","#25140a","#3e2411","#57351b","#fb923c","#fbbf24","🍊"],
+["چندجهانی","#100b20","#211638","#30204c","#f472b6","#22d3ee","🪐"]
+].map(t=>({name:t[0],bg:t[1],panel:t[2],panel2:t[3],accent:t[4],accent2:t[5],art:t[6]}));
 
 function makeArtwork(t){
-
- const svg=`
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <defs>
-   <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0%" stop-color="${t.accent}"/>
-    <stop offset="100%" stop-color="${t.accent2}"/>
-   </linearGradient>
-   <radialGradient id="r">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity=".32"/>
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-   </radialGradient>
-  </defs>
-  <rect width="100" height="100" rx="15" fill="${t.panel2}"/>
-  <circle cx="80" cy="17" r="38" fill="url(#r)"/>
-  <circle cx="16" cy="86" r="35" fill="${t.accent}" opacity=".13"/>
-  <path d="M0 75 Q25 45 50 70 T100 58 V100 H0Z"
-        fill="url(#g)" opacity=".25"/>
-  <circle cx="50" cy="47" r="28" fill="url(#g)" opacity=".22"/>
-  <circle cx="50" cy="47" r="22" fill="none"
-          stroke="url(#g)" stroke-width="2" opacity=".8"/>
-  <text x="50" y="61" text-anchor="middle"
-        font-size="40" font-family="Arial">${t.art}</text>
-  <circle cx="14" cy="16" r="3" fill="${t.accent}"/>
-  <circle cx="86" cy="80" r="3" fill="${t.accent2}"/>
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+ <defs>
+ <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+ <stop offset="0%" stop-color="${t.accent}"/>
+ <stop offset="100%" stop-color="${t.accent2}"/>
+ </linearGradient>
+ <radialGradient id="r">
+ <stop offset="0%" stop-color="#ffffff" stop-opacity=".32"/>
+ <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+ </radialGradient>
+ </defs>
+ <rect width="100" height="100" rx="15" fill="${t.panel2}"/>
+ <circle cx="80" cy="17" r="38" fill="url(#r)"/>
+ <circle cx="16" cy="86" r="35" fill="${t.accent}" opacity=".13"/>
+ <path d="M0 75 Q25 45 50 70 T100 58 V100 H0Z" fill="url(#g)" opacity=".25"/>
+ <circle cx="50" cy="47" r="28" fill="url(#g)" opacity=".22"/>
+ <circle cx="50" cy="47" r="22" fill="none" stroke="url(#g)" stroke-width="2" opacity=".8"/>
+ <text x="50" y="61" text-anchor="middle" font-size="40" font-family="Arial">${t.art}</text>
+ <circle cx="14" cy="16" r="3" fill="${t.accent}"/>
+ <circle cx="86" cy="80" r="3" fill="${t.accent2}"/>
  </svg>`;
-
  return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
 }
 
 function createThemes(){
-
  const box=document.getElementById("themes");
-
  themes.forEach((t,i)=>{
-
   const btn=document.createElement("button");
-  btn.className="theme-option";
-  btn.type="button";
+  btn.className="theme-option";btn.type="button";
   btn.setAttribute("aria-label","انتخاب تم "+t.name);
-
-  const info=document.createElement("span");
-  info.className="theme-info";
-
-  const name=document.createElement("span");
-  name.className="theme-name";
-  name.textContent=t.name;
-
-  const art=document.createElement("span");
-  art.className="theme-art";
-
-  const img=document.createElement("img");
-  img.src=makeArtwork(t);
-  img.alt="تصویر تم "+t.name;
-  img.width=53;
-  img.height=53;
-  img.style.width="100%";
-  img.style.height="100%";
-  img.style.objectFit="cover";
-
-  art.appendChild(img);
-  info.append(name);
-  btn.append(info,art);
-
+  const info=document.createElement("span");info.className="theme-info";
+  const name=document.createElement("span");name.className="theme-name";name.textContent=t.name;
+  const art=document.createElement("span");art.className="theme-art";
+  const img=document.createElement("img");img.src=makeArtwork(t);
+  img.alt="تصویر تم "+t.name;img.width=53;img.height=53;
+  art.appendChild(img);info.append(name);btn.append(info,art);
   btn.addEventListener("click",()=>applyTheme(i));
-
   box.appendChild(btn);
-
  });
-
 }
 
 function applyTheme(i){
-
- const t=themes[i];
- if(!t)return;
-
+ const t=themes[i];if(!t)return;
  const root=document.documentElement;
-
  root.style.setProperty("--bg",t.bg);
  root.style.setProperty("--panel",t.panel);
  root.style.setProperty("--panel2",t.panel2);
  root.style.setProperty("--accent",t.accent);
  root.style.setProperty("--accent2",t.accent2);
-
- document.querySelectorAll(".theme-option")
- .forEach((btn,j)=>{
-  btn.classList.toggle("active",i===j);
- });
-
- try{
-  localStorage.setItem("nova-theme",String(i));
- }catch(e){}
-
+ document.querySelectorAll(".theme-option").forEach((btn,j)=>btn.classList.toggle("active",i===j));
+ try{localStorage.setItem("nova-theme",String(i))}catch(e){}
 }
 
 createThemes();
-
 let savedTheme=0;
-
 try{
  const saved=localStorage.getItem("nova-theme");
  if(saved!==null){
   const index=Number(saved);
-  if(Number.isInteger(index)&&index>=0&&index<themes.length){
-   savedTheme=index;
-  }
+  if(Number.isInteger(index)&&index>=0&&index<themes.length)savedTheme=index;
  }
 }catch(e){}
-
 applyTheme(savedTheme);
-
-
-/* ===================================
-   OPERATION SELECTION
-=================================== */
 
 const $=id=>document.getElementById(id);
 
 function updateOptions(){
-
  document.querySelectorAll(".option").forEach(label=>{
-  label.classList.toggle(
-   "selected",
-   label.querySelector("input").checked
-  );
+  label.classList.toggle("selected",label.querySelector("input").checked);
  });
-
 }
-
-document.querySelectorAll(".option input")
-.forEach(input=>input.addEventListener("change",updateOptions));
+document.querySelectorAll(".option input").forEach(input=>input.addEventListener("change",updateOptions));
 
 $("selectAll").addEventListener("click",()=>{
- document.querySelectorAll(".option input")
- .forEach(input=>input.checked=true);
+ document.querySelectorAll(".option input").forEach(input=>input.checked=true);
  updateOptions();
 });
-
 $("clearSelection").addEventListener("click",()=>{
- document.querySelectorAll(".option input")
- .forEach(input=>input.checked=false);
+ document.querySelectorAll(".option input").forEach(input=>input.checked=false);
  updateOptions();
 });
-
-
-/* ===================================
-   MATHEMATICAL FUNCTIONS
-=================================== */
 
 function isPrime(n){
-
  if(n<2)return false;
  if(n===2)return true;
  if(n%2===0)return false;
-
- for(let i=3;i<=Math.sqrt(n);i+=2){
-  if(n%i===0)return false;
- }
-
+ for(let i=3;i<=Math.sqrt(n);i+=2){if(n%i===0)return false}
  return true;
 }
 
 function getDivisors(n){
-
- const value=Math.abs(n);
- const small=[],large=[];
-
+ const value=Math.abs(n),small=[],large=[];
  for(let i=1;i<=Math.sqrt(value);i++){
   if(value%i===0){
    small.push(i);
    if(i!==value/i)large.push(value/i);
   }
  }
-
  return [...small,...large.reverse()];
 }
 
 function createCard(title,content,full=false){
-
  const card=document.createElement("article");
  card.className="result-card"+(full?" full":"");
-
- const heading=document.createElement("h4");
- heading.textContent=title;
-
- const paragraph=document.createElement("p");
- paragraph.innerHTML=content;
-
+ const heading=document.createElement("h4");heading.textContent=title;
+ const paragraph=document.createElement("p");paragraph.innerHTML=content;
  card.append(heading,paragraph);
  $("resultsGrid").appendChild(card);
-
 }
-
-
-/* ===================================
-   NUMBER ANALYSIS ENGINE
-=================================== */
 
 function createAnalysis(n,selected){
-
- const grid=$("resultsGrid");
- grid.innerHTML="";
-
+ const grid=$("resultsGrid");grid.innerHTML="";
  selected.forEach(type=>{
-
   switch(type){
-
    case "prime":
-
-    if(n<2){
-     createCard("تشخیص عدد اول یا مرکب","این عدد نه اول است و نه مرکب.");
-    }else if(isPrime(n)){
-     createCard("تشخیص عدد اول یا مرکب",`<span class="good">✓ عدد ${n} یک عدد اول است.</span>`);
-    }else{
-     createCard("تشخیص عدد اول یا مرکب",`<span class="bad">عدد ${n} مرکب است.</span>`);
-    }
+    if(n<2)createCard("تشخیص عدد اول یا مرکب","این عدد نه اول است و نه مرکب.");
+    else if(isPrime(n))createCard("تشخیص عدد اول یا مرکب",`<span class="good">✓ عدد ${n} یک عدد اول است.</span>`);
+    else createCard("تشخیص عدد اول یا مرکب",`<span class="bad">عدد ${n} مرکب است.</span>`);
     break;
-
    case "even":
-
-    createCard("تشخیص زوج یا فرد",
-     n%2===0
-      ? `<span class="good">عدد ${n} زوج است.</span>`
-      : `<span class="good">عدد ${n} فرد است.</span>`
-    );
+    createCard("تشخیص زوج یا فرد",n%2===0?`<span class="good">عدد ${n} زوج است.</span>`:`<span class="good">عدد ${n} فرد است.</span>`);
     break;
-
    case "divisors":
-
-    if(n===0){
-     createCard("شمارنده‌های مثبت","عدد صفر بی‌نهایت شمارنده مثبت دارد.");
-     break;
-    }
-
+    if(n===0){createCard("شمارنده‌های مثبت","عدد صفر بی‌نهایت شمارنده مثبت دارد.");break}
     const divisors=getDivisors(n);
-    const display=divisors.length>500
-     ? divisors.slice(0,500).join(" ، ")+" ... (نمایش محدود)"
-     : divisors.join(" ، ");
-
-    createCard("شمارنده‌های مثبت",
-     `تعداد شمارنده‌ها: <b>${divisors.length}</b><br><br>${display}`,true);
+    const display=divisors.length>500?divisors.slice(0,500).join(" ، ")+" ... (نمایش محدود)":divisors.join(" ، ");
+    createCard("شمارنده‌های مثبت",`تعداد شمارنده‌ها: <b>${divisors.length}</b><br><br>${display}`,true);
     break;
-
    case "square":
-
     createCard("توان دوم عدد",`<div class="big">${n*n}</div>`);
     break;
-
    case "sqrt":
-
-    if(n<0){
-     createCard("جذر تقریبی","جذر حقیقی این عدد در مجموعه اعداد حقیقی تعریف نشده است.");
-    }else{
-     createCard("جذر تقریبی",`<div class="big">${Math.sqrt(n).toPrecision(10)}</div>`);
-    }
+    if(n<0)createCard("جذر تقریبی","جذر حقیقی این عدد در مجموعه اعداد حقیقی تعریف نشده است.");
+    else createCard("جذر تقریبی",`<div class="big">${Math.sqrt(n).toPrecision(10)}</div>`);
     break;
-
    case "digits":
-
     const digits=String(Math.abs(n)).split("").map(Number);
     const sum=digits.reduce((a,b)=>a+b,0);
-
-    createCard("مجموع رقم‌ها",
-     `رقم‌ها: ${digits.join(" + ")}<br><br><div class="big">${sum}</div>`);
+    createCard("مجموع رقم‌ها",`رقم‌ها: ${digits.join(" + ")}<br><br><div class="big">${sum}</div>`);
     break;
-
    case "sign":
-
-    createCard("تشخیص علامت عدد",
-     n>0?"عدد مثبت است.":n<0?"عدد منفی است.":"عدد صفر است.");
+    createCard("تشخیص علامت عدد",n>0?"عدد مثبت است.":n<0?"عدد منفی است.":"عدد صفر است.");
     break;
-
    case "multiples":
-
     const multiples=Array.from({length:10},(_,i)=>n*(i+1));
-
-    createCard("ده مضرب اول",
-     `<div class="ltr">${multiples.join(" ، ")}</div>`,true);
+    createCard("ده مضرب اول",`<div class="ltr">${multiples.join(" ، ")}</div>`,true);
     break;
-
    case "divisibility":
-
     const rows=[];
-
     for(let i=2;i<=10;i++){
      const divisible=n%i===0;
-     rows.push(
-      `${i} : <span class="${divisible?"good":"bad"}">${
-       divisible?"بخش‌پذیر است ✓":"بخش‌پذیر نیست ✕"
-      }</span>`
-     );
+     rows.push(`${i} : <span class="${divisible?"good":"bad"}">${divisible?"بخش‌پذیر است ✓":"بخش‌پذیر نیست ✕"}</span>`);
     }
-
     createCard("بررسی بخش‌پذیری",rows.join("<br>"));
     break;
-
    case "perfect":
-
-    if(n<0){
-     createCard("تشخیص مربع کامل","عدد منفی مربع کامل نیست.");
-    }else{
-     const r=Math.sqrt(n);
-     const perfect=Number.isInteger(r);
-
-     createCard("تشخیص مربع کامل",
-      perfect
-       ? `<span class="good">✓ این عدد مربع کامل است.</span><br><br>${r} × ${r} = ${n}`
-       : `<span class="bad">✕ این عدد مربع کامل نیست.</span>`
-     );
+    if(n<0)createCard("تشخیص مربع کامل","عدد منفی مربع کامل نیست.");
+    else{
+     const r=Math.sqrt(n),perfect=Number.isInteger(r);
+     createCard("تشخیص مربع کامل",perfect?`<span class="good">✓ این عدد مربع کامل است.</span><br><br>${r} × ${r} = ${n}`:`<span class="bad">✕ این عدد مربع کامل نیست.</span>`);
     }
     break;
-
   }
-
  });
-
 }
 
-
-/* ===================================
-   CALCULATE
-=================================== */
-
 $("calculate").addEventListener("click",()=>{
-
  $("error").textContent="";
-
  const raw=$("numberInput").value.trim();
-
- if(raw===""){
-  $("error").textContent="لطفاً ابتدا یک عدد وارد کنید.";
-  return;
- }
-
+ if(raw===""){$("error").textContent="لطفاً ابتدا یک عدد وارد کنید.";return}
  const n=Number(raw);
-
- if(!Number.isSafeInteger(n)){
-  $("error").textContent="لطفاً یک عدد صحیح و معتبر وارد کنید.";
-  return;
- }
-
- const selected=[
-  ...document.querySelectorAll(".option input:checked")
- ].map(input=>input.value);
-
- if(!selected.length){
-  $("error").textContent="لطفاً حداقل یک عملیات را انتخاب کنید.";
-  return;
- }
-
+ if(!Number.isSafeInteger(n)){$("error").textContent="لطفاً یک عدد صحیح و معتبر وارد کنید.";return}
+ const selected=[...document.querySelectorAll(".option input:checked")].map(input=>input.value);
+ if(!selected.length){$("error").textContent="لطفاً حداقل یک عملیات را انتخاب کنید.";return}
  $("analyzedNumber").textContent=n;
  createAnalysis(n,selected);
-
  $("results").classList.remove("show");
  void $("results").offsetWidth;
  $("results").classList.add("show");
-
- $("results").scrollIntoView({
-  behavior:"smooth",
-  block:"start"
- });
-
+ $("results").scrollIntoView({behavior:"smooth",block:"start"});
 });
 
-
-/* ===================================
-   CLEAR
-=================================== */
-
 $("clearResults").addEventListener("click",()=>{
-
  $("results").classList.remove("show");
  $("resultsGrid").innerHTML="";
  $("error").textContent="";
-
 });
 
-
-/* ===================================
-   COPY RESULTS
-=================================== */
-
 $("copyResults").addEventListener("click",async()=>{
-
  const text=[
   "NOVA MATH PRO",
   "عدد: "+$("analyzedNumber").textContent,
   ...[...$("resultsGrid").children].map(card=>card.innerText)
  ].join("\n\n");
-
  const button=$("copyResults");
-
  try{
-
   if(navigator.clipboard&&window.isSecureContext){
    await navigator.clipboard.writeText(text);
   }else{
    const textarea=document.createElement("textarea");
-   textarea.value=text;
-   document.body.appendChild(textarea);
+   textarea.value=text;document.body.appendChild(textarea);
    textarea.select();
-
    const success=document.execCommand("copy");
    textarea.remove();
-
    if(!success)throw Error("Copy failed");
   }
-
   button.textContent="✓ کپی شد";
-
- }catch(e){
-  button.textContent="کپی ناموفق";
- }
-
- setTimeout(()=>{
-  button.textContent="کپی نتایج";
- },1600);
-
+ }catch(e){button.textContent="کپی ناموفق"}
+ setTimeout(()=>button.textContent="کپی نتایج",1600);
 });
-
-
-/* ENTER KEY */
 
 $("numberInput").addEventListener("keydown",e=>{
  if(e.key==="Enter")$("calculate").click();
 });
-
 updateOptions();
-
 </script>
-
 </body>
 </html>
