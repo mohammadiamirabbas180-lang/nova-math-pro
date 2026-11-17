@@ -296,21 +296,31 @@ footer{
 
 .game-stats{
  display:flex;
- gap:18px;
+ gap:15px;
  color:#d8e4ff;
  font-size:14px;
+ flex-wrap:wrap;
+ align-items:center;
+}
+
+.stat-pill{
+ background:rgba(255,255,255,.06);
+ border:1px solid rgba(255,255,255,.12);
+ padding:5px 12px;
+ border-radius:10px;
 }
 
 .game-main{
  width:min(900px,94%);
- margin:20px auto;
+ margin:16px auto;
 }
 
 .game-instructions{
  text-align:center;
  color:#bac7e7;
- line-height:2;
+ line-height:1.9;
  font-size:13px;
+ margin:8px 0 12px;
 }
 
 .game-canvas-wrap{
@@ -319,7 +329,7 @@ footer{
  border:2px solid #384d85;
  border-radius:17px;
  overflow:hidden;
- box-shadow:0 0 35px rgba(0,217,255,.12);
+ box-shadow:0 0 35px rgba(0,217,255,.15);
  background:#101a3c;
 }
 
@@ -334,42 +344,77 @@ footer{
  justify-content:center;
  align-items:center;
  gap:14px;
- margin:18px 0;
+ margin:16px 0;
 }
 
 .control-btn{
- width:65px;
+ width:68px;
  height:60px;
  border:1px solid #52669d;
  border-radius:15px;
  color:white;
- background:#202e55;
- font-size:25px;
+ background:linear-gradient(180deg,#28396b,#1b2749);
+ font-size:24px;
  touch-action:none;
  user-select:none;
+ box-shadow:0 6px 15px rgba(0,0,0,.3);
 }
 
-.control-btn:active{background:#5364a5}
+.control-btn.dash-btn{
+ font-size:18px;
+ font-weight:800;
+ background:linear-gradient(180deg,#6c42d8,#47269c);
+ border-color:#8f6bff;
+}
+
+.control-btn:active{
+ transform:scale(.95);
+ background:#5364a5;
+}
 
 .game-message{
  text-align:center;
- min-height:50px;
+ min-height:46px;
  color:#ffe08a;
  line-height:1.8;
- padding:10px;
+ padding:8px 12px;
+ font-weight:700;
 }
 
 .question-box{
  display:none;
- background:#18264b;
- border:1px solid #4b65a8;
- border-radius:17px;
- padding:20px;
+ background:linear-gradient(135deg,#18264b,#1e1846);
+ border:2px solid #00d9ff;
+ border-radius:18px;
+ padding:22px;
  text-align:center;
  margin:15px 0;
+ box-shadow:0 0 30px rgba(0,217,255,.25);
+ animation:popIn .25s ease;
+}
+
+@keyframes popIn{
+ from{transform:scale(.9);opacity:0}
+ to{transform:scale(1);opacity:1}
 }
 
 .question-box.show{display:block}
+
+.question-timer{
+ height:7px;
+ width:100%;
+ background:rgba(255,255,255,.12);
+ border-radius:99px;
+ overflow:hidden;
+ margin:10px 0 14px;
+}
+
+.question-timer-bar{
+ height:100%;
+ width:100%;
+ background:linear-gradient(90deg,#00d9ff,#ffcf5a,#ff4f79);
+ transition:width .1s linear;
+}
 
 .question-options{
  display:grid;
@@ -384,10 +429,15 @@ footer{
  border:1px solid #536ca8;
  border-radius:12px;
  padding:13px;
- font-size:17px;
+ font-size:18px;
+ font-weight:700;
+ transition:.15s;
 }
 
-.question-options button:hover{background:#425b9c}
+.question-options button:hover{
+ background:#425b9c;
+ transform:translateY(-2px);
+}
 
 .game-over{
  display:none;
@@ -403,19 +453,20 @@ footer{
 .game-over.show{display:flex}
 
 .game-over-card{
- width:min(420px,100%);
+ width:min(430px,100%);
  padding:30px;
  border-radius:22px;
  text-align:center;
  background:#172343;
  border:1px solid #536ca8;
+ box-shadow:0 20px 60px rgba(0,0,0,.5);
 }
 
 @media(max-width:600px){
  header{justify-content:center;text-align:center}
  .section{padding:18px}
  .game-stats{width:100%;justify-content:center}
- .control-btn{width:58px;height:55px}
+ .control-btn{width:60px;height:55px}
 }
 </style>
 </head>
@@ -529,19 +580,23 @@ footer{
  <div class="game-topbar">
   <h2>🚀 بیداری فرمول</h2>
   <div class="game-stats">
-   <span>⭐ امتیاز: <b id="score">۰</b></span>
-   <span>🌟 ستاره‌ها: <b id="stars">۰</b></span>
-   <span>🗺️ مرحله: <b id="level">۱</b></span>
+   <span class="stat-pill">❤️ جان: <b id="lives">۳</b></span>
+   <span class="stat-pill">⭐ امتیاز: <b id="score">۰</b></span>
+   <span class="stat-pill">🌟 ستاره: <b id="stars">۰</b></span>
+   <span class="stat-pill">🔥 کمبو: <b id="combo">×۱</b></span>
+   <span class="stat-pill">🗺️ مرحله: <b id="level">۱</b></span>
   </div>
-  <button class="btn" onclick="closeGame()">خروج ✕</button>
+  <div style="display:flex;gap:8px">
+   <button class="btn secondary" id="soundBtn" onclick="toggleSound()" style="padding:10px 14px">🔊</button>
+   <button class="btn" onclick="closeGame()" style="padding:10px 16px">خروج ✕</button>
+  </div>
  </div>
 
  <div class="game-main">
   <p class="game-instructions">
-   حرکت: کلیدهای جهت‌دار یا A و D
-   | پرش: Space یا فلش بالا
+   حرکت: <b>A / D</b> یا کلیدهای جهت‌دار | پرش و پرش دوتایی: <b>Space / W / ⬆</b> | دش سریع: <b>Shift</b>
    <br>
-   در موبایل از دکمه‌های پایین صفحه استفاده کن.
+   💡 روی سر ربات‌های قرمز بپر تا نابود شوند! سپر آبی 🛡️ تو را از یک ضربه حفظ می‌کند.
   </p>
 
   <div class="game-canvas-wrap">
@@ -551,16 +606,18 @@ footer{
   <div class="game-controls">
    <button class="control-btn" id="leftBtn">◀</button>
    <button class="control-btn" id="jumpBtn">⬆</button>
+   <button class="control-btn dash-btn" id="dashBtn">⚡</button>
    <button class="control-btn" id="rightBtn">▶</button>
   </div>
 
   <div class="game-message" id="gameMessage">
-   ستاره‌های درخشان را جمع کن و به دروازه برس!
+   ستاره‌های درخشان را جمع کن، از ربات‌ها عبور کن و به دروازه برس!
   </div>
 
   <div class="question-box" id="questionBox">
-   <h3>🧠 دروازه ریاضی!</h3>
-   <p id="questionText"></p>
+   <h3>🧠 دروازه کهکشانی ریاضی!</h3>
+   <div class="question-timer"><div class="question-timer-bar" id="qTimerBar"></div></div>
+   <p id="questionText" style="font-size:20px;font-weight:800"></p>
    <div class="question-options" id="questionOptions"></div>
   </div>
  </div>
@@ -569,8 +626,8 @@ footer{
 <div class="game-over" id="gameOver">
  <div class="game-over-card">
   <h2 id="overTitle">🏆 آفرین!</h2>
-  <p id="overText">ماجراجویی تمام شد.</p>
-  <button class="btn gold" onclick="restartGame()">دوباره بازی کن</button>
+  <p id="overText" style="line-height:2;color:#d6e2ff">ماجراجویی تمام شد.</p>
+  <button class="btn gold" onclick="restartGame()">🔄 دوباره بازی کن</button>
   <button class="btn" onclick="closeGame()" style="margin-top:10px">بازگشت به سایت</button>
  </div>
 </div>
@@ -732,19 +789,32 @@ const savedTheme=Number(localStorage.getItem('nova-theme')||0);
 setTheme(Number.isInteger(savedTheme)&&savedTheme>=0&&savedTheme<themes.length?savedTheme:0);
 
 
-/* FORMULA AWAKENING GAME */
+/* =========================================================
+   FORMULA AWAKENING GAME - ENHANCED EDITION
+   ========================================================= */
 
 const canvas=document.getElementById('gameCanvas');
 const ctx=canvas.getContext('2d');
 
 const W=850,H=420;
+const MAX_LEVEL=7;
 
 let player;
 let platforms=[];
 let collectibles=[];
+let enemies=[];
+let spikes=[];
+let jumpPads=[];
+let powerups=[];
+let particles=[];
+let floatingTexts=[];
+
 let score=0;
 let stars=0;
+let lives=3;
+let combo=1;
 let level=1;
+let highScore=Number(localStorage.getItem('nova-math-hi')||0);
 let camera=0;
 let gameRunning=false;
 let animationId=null;
@@ -752,19 +822,121 @@ let keys={};
 let questionActive=false;
 let gateX=0;
 let lastTime=0;
+let worldTick=0;
+let screenShake=0;
+let qTimerInterval=null;
+let qTimeLeft=100;
 
-const gravity=.58;
-const questions=[
+const gravity=.56;
+
+/* Web Audio Sound Effects */
+let soundEnabled=true;
+let audioCtx=null;
+
+function playSound(type){
+ if(!soundEnabled)return;
+ try{
+  if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  const now=audioCtx.currentTime;
+  const osc=audioCtx.createOscillator();
+  const gain=audioCtx.createGain();
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  if(type==='jump'){
+   osc.type='sine';
+   osc.frequency.setValueAtTime(280,now);
+   osc.frequency.exponentialRampToValueAtTime(580,now+.13);
+   gain.gain.setValueAtTime(.14,now);
+   gain.gain.linearRampToValueAtTime(0,now+.14);
+   osc.start(now);osc.stop(now+.14);
+  }else if(type==='star'){
+   osc.type='triangle';
+   osc.frequency.setValueAtTime(520,now);
+   osc.frequency.setValueAtTime(780,now+.06);
+   gain.gain.setValueAtTime(.16,now);
+   gain.gain.linearRampToValueAtTime(0,now+.2);
+   osc.start(now);osc.stop(now+.2);
+  }else if(type==='stomp'){
+   osc.type='square';
+   osc.frequency.setValueAtTime(180,now);
+   osc.frequency.exponentialRampToValueAtTime(420,now+.12);
+   gain.gain.setValueAtTime(.14,now);
+   gain.gain.linearRampToValueAtTime(0,now+.13);
+   osc.start(now);osc.stop(now+.13);
+  }else if(type==='hurt'){
+   osc.type='sawtooth';
+   osc.frequency.setValueAtTime(220,now);
+   osc.frequency.linearRampToValueAtTime(90,now+.25);
+   gain.gain.setValueAtTime(.18,now);
+   gain.gain.linearRampToValueAtTime(0,now+.26);
+   osc.start(now);osc.stop(now+.26);
+  }else if(type==='win'){
+   osc.type='triangle';
+   osc.frequency.setValueAtTime(440,now);
+   osc.frequency.setValueAtTime(554,now+.08);
+   osc.frequency.setValueAtTime(659,now+.16);
+   osc.frequency.setValueAtTime(880,now+.24);
+   gain.gain.setValueAtTime(.18,now);
+   gain.gain.linearRampToValueAtTime(0,now+.4);
+   osc.start(now);osc.stop(now+.4);
+  }else if(type==='pad'){
+   osc.type='sine';
+   osc.frequency.setValueAtTime(220,now);
+   osc.frequency.exponentialRampToValueAtTime(880,now+.22);
+   gain.gain.setValueAtTime(.16,now);
+   gain.gain.linearRampToValueAtTime(0,now+.23);
+   osc.start(now);osc.stop(now+.23);
+  }
+ }catch(e){}
+}
+
+function toggleSound(){
+ soundEnabled=!soundEnabled;
+ document.getElementById('soundBtn').textContent=soundEnabled?'🔊':'🔇';
+}
+
+/* Dynamic + Curated Math Questions */
+const questionBank=[
  {q:'۷ + ۸ چند می‌شود؟',a:['۱۳','۱۵','۱۶','۱۴'],correct:1},
  {q:'۶ × ۴ چند می‌شود؟',a:['۲۴','۲۰','۲۸','۱۸'],correct:0},
  {q:'جذر ۸۱ چند است؟',a:['۷','۸','۹','۱۰'],correct:2},
  {q:'عدد ۲۱ بر کدام عدد بخش‌پذیر است؟',a:['۸','۵','۷','۱۰'],correct:2},
  {q:'۱۲ × ۱۲ چند می‌شود؟',a:['۱۲۴','۱۴۴','۱۳۴','۱۵۴'],correct:1},
  {q:'عدد بعدی در دنباله ۲، ۴، ۸، ۱۶ چیست؟',a:['۲۴','۲۸','۳۰','۳۲'],correct:3},
- {q:'مجموع زاویه‌های مثلث چند درجه است؟',a:['۹۰','۱۸۰','۲۷۰','۳۶۰'],correct:1}
+ {q:'مجموع زاویه‌های داخلی مثلث چند درجه است؟',a:['۹۰','۱۸۰','۲۷۰','۳۶۰'],correct:1},
+ {q:'کدام یک از اعداد زیر عدد اول است؟',a:['۱۵','۲۱','۱۹','۲۷'],correct:2},
+ {q:'توان دوم عدد ۹ چند می‌شود؟',a:['۱۸','۷۲','۸۱','۹۹'],correct:2},
+ {q:'۳ × (۴ + ۵) برابر است با:',a:['۱۷','۲۷','۲۲','۳۵'],correct:1},
+ {q:'بزرگ‌ترین مقسوم‌علیه مشترک ۱۲ و ۱۸ چیست؟',a:['۳','۴','۶','۹'],correct:2},
+ {q:'۲۵ درصدِ عدد ۲۰۰ چند می‌شود؟',a:['۲۵','۴۰','۵۰','۷۵'],correct:2}
 ];
 
-let currentQuestion=0;
+let activeQuestionObj=null;
+
+function toFa(n){
+ return Number(n).toLocaleString('fa-IR');
+}
+
+function spawnParticles(x,y,color,count=14){
+ for(let i=0;i<count;i++){
+  const ang=Math.random()*Math.PI*2;
+  const spd=1+Math.random()*4.2;
+  particles.push({
+   x,y,
+   vx:Math.cos(ang)*spd,
+   vy:Math.sin(ang)*spd-1,
+   life:22+Math.random()*16,
+   maxLife:38,
+   color,
+   size:2.5+Math.random()*3
+  });
+ }
+}
+
+function addFloatingText(x,y,text,color='#ffe066'){
+ floatingTexts.push({x,y,text,color,life:42});
+}
 
 function openGame(){
  document.getElementById('gameOverlay').classList.add('show');
@@ -777,50 +949,91 @@ function closeGame(){
  document.getElementById('gameOver').classList.remove('show');
  document.body.style.overflow='';
  gameRunning=false;
+ if(qTimerInterval)clearInterval(qTimerInterval);
  if(animationId)cancelAnimationFrame(animationId);
 }
 
 function createLevel(){
  player={
-  x:55,y:250,w:30,h:39,
+  x:55,y:250,w:32,h:40,
   vx:0,vy:0,
   grounded:false,
-  color:'#ffe36b'
+  jumpsLeft:2,
+  dashCooldown:0,
+  dashTime:0,
+  facing:1,
+  shield:false,
+  invuln:0,
+  trail:[]
  };
 
  camera=0;
+ particles=[];
+ floatingTexts=[];
+
+ const spdMult=1+(level-1)*0.15;
 
  platforms=[
-  {x:0,y:355,w:250,h:65},
-  {x:300,y:305,w:150,h:30},
-  {x:500,y:260,w:150,h:30},
-  {x:700,y:320,w:170,h:35},
-  {x:920,y:270,w:140,h:30},
-  {x:1120,y:220,w:160,h:30},
-  {x:1360,y:300,w:170,h:35},
-  {x:1600,y:250,w:150,h:30},
-  {x:1820,y:355,w:250,h:65}
+  {x:0,y:355,w:260,h:65},
+  {x:310,y:305,w:155,h:28,moveY:level>=2?28:0,baseY:305,speed:.035*spdMult},
+  {x:520,y:255,w:160,h:28},
+  {x:730,y:320,w:185,h:32,moveX:level>=3?45:0,baseX:730,speed:.03*spdMult},
+  {x:965,y:265,w:150,h:28},
+  {x:1165,y:205,w:170,h:28,moveY:level>=2?35:0,baseY:205,speed:.04*spdMult},
+  {x:1395,y:310,w:195,h:34},
+  {x:1645,y:245,w:165,h:28},
+  {x:1860,y:355,w:290,h:65}
  ];
 
  collectibles=[
-  {x:150,y:310,taken:false},
-  {x:365,y:260,taken:false},
-  {x:555,y:215,taken:false},
-  {x:760,y:275,taken:false},
-  {x:970,y:225,taken:false},
-  {x:1180,y:175,taken:false},
-  {x:1430,y:255,taken:false},
-  {x:1660,y:205,taken:false}
+  {x:150,y:310,taken:false,type:'star'},
+  {x:385,y:250,taken:false,type:'star'},
+  {x:595,y:205,taken:false,type:'gem'},
+  {x:820,y:270,taken:false,type:'star'},
+  {x:1040,y:215,taken:false,type:'star'},
+  {x:1250,y:150,taken:false,type:'gem'},
+  {x:1490,y:260,taken:false,type:'star'},
+  {x:1725,y:195,taken:false,type:'star'},
+  {x:1920,y:305,taken:false,type:'gem'}
  ];
 
- gateX=1950;
+ jumpPads=[
+  {x:210,y:343,w:34,h:12},
+  {x:1075,y:253,w:34,h:12},
+  {x:1545,y:298,w:34,h:12}
+ ];
+
+ powerups=[
+  {x:600,y:160,type:'shield',taken:false},
+  {x:1440,y:215,type:'magnet',taken:false}
+ ];
+
+ spikes=[
+  {x:560,y:243,w:28,h:12},
+  {x:1460,y:298,w:30,h:12}
+ ];
+
+ enemies=[
+  {x:545,y:223,w:30,h:32,minX:525,maxX:645,vx:1.25*spdMult,alive:true},
+  {x:990,y:233,w:30,h:32,minX:970,maxX:1080,vx:1.4*spdMult,alive:true},
+  {x:1665,y:213,w:30,h:32,minX:1650,maxX:1775,vx:1.55*spdMult,alive:true}
+ ];
+
+ if(level>=2){
+  enemies.push({x:1900,y:323,w:32,h:32,minX:1870,maxX:2010,vx:1.7*spdMult,alive:true});
+ }
+
+ gateX=2040;
 }
 
 function restartGame(){
  score=0;
  stars=0;
+ lives=3;
+ combo=1;
  level=1;
  questionActive=false;
+ if(qTimerInterval)clearInterval(qTimerInterval);
 
  document.getElementById('gameOver').classList.remove('show');
  document.getElementById('questionBox').classList.remove('show');
@@ -835,13 +1048,15 @@ function restartGame(){
  animationId=requestAnimationFrame(gameLoop);
 
  document.getElementById('gameMessage').textContent=
- 'حرکت کن، بپر و ستاره‌های ریاضی را جمع کن!';
+  '🚀 پرش دوتایی و دش فعال است! روی ربات‌ها بپر و به دروازه ریاضی برس!';
 }
 
 function updateStats(){
- document.getElementById('score').textContent=score.toLocaleString('fa-IR');
- document.getElementById('stars').textContent=stars.toLocaleString('fa-IR');
- document.getElementById('level').textContent=level.toLocaleString('fa-IR');
+ document.getElementById('lives').textContent=toFa(lives)+(player&&player.shield?' 🛡️':'');
+ document.getElementById('score').textContent=toFa(score);
+ document.getElementById('stars').textContent=toFa(stars);
+ document.getElementById('combo').textContent='×'+toFa(combo);
+ document.getElementById('level').textContent=toFa(level)+'/'+toFa(MAX_LEVEL);
 }
 
 function gameLoop(time){
@@ -849,6 +1064,7 @@ function gameLoop(time){
 
  const dt=lastTime?Math.min((time-lastTime)/16.67,2):1;
  lastTime=time;
+ worldTick+=dt;
 
  if(!questionActive){
   updateGame(dt);
@@ -859,28 +1075,94 @@ function gameLoop(time){
  animationId=requestAnimationFrame(gameLoop);
 }
 
-function updateGame(dt){
- const speed=3.8;
+function hurtPlayer(reason){
+ if(player.invuln>0)return;
 
+ if(player.shield){
+  player.shield=false;
+  player.invuln=65;
+  playSound('hurt');
+  spawnParticles(player.x+player.w/2,player.y+player.h/2,'#35e0ff',22);
+  addFloatingText(player.x,player.y-10,'سپر محافظ شکست! 🛡️','#35e0ff');
+  updateStats();
+  return;
+ }
+
+ lives--;
+ combo=1;
+ screenShake=12;
+ player.invuln=75;
+ playSound('hurt');
+ spawnParticles(player.x+player.w/2,player.y+player.h/2,'#ff4d6d',24);
+ updateStats();
+
+ if(lives<=0){
+  finishGame(false);
+  return;
+ }
+
+ player.x=55;
+ player.y=230;
  player.vx=0;
+ player.vy=0;
+ document.getElementById('gameMessage').textContent=reason||'⚠️ مراقب موانع باش! یک جان کم شد.';
+}
 
- if(keys.left)player.vx=-speed;
- if(keys.right)player.vx=speed;
+function updateGame(dt){
+ const baseSpeed=4.1;
+
+ // Moving platforms
+ platforms.forEach(p=>{
+  if(p.moveY){
+   p.y=p.baseY+Math.sin(worldTick*p.speed)*p.moveY;
+  }
+  if(p.moveX){
+   p.x=p.baseX+Math.cos(worldTick*p.speed)*p.moveX;
+  }
+ });
+
+ if(player.invuln>0)player.invuln-=dt;
+ if(player.dashCooldown>0)player.dashCooldown-=dt;
+
+ // Dash
+ if(keys.dash && player.dashCooldown<=0){
+  player.dashTime=9;
+  player.dashCooldown=45;
+  playSound('jump');
+  spawnParticles(player.x+player.w/2,player.y+player.h/2,'#a78bfa',12);
+ }
+ keys.dash=false;
+
+ if(player.dashTime>0){
+  player.dashTime-=dt;
+  player.vx=player.facing*9.5;
+  player.vy=0;
+ }else{
+  player.vx=0;
+  if(keys.left){player.vx=-baseSpeed;player.facing=-1;}
+  if(keys.right){player.vx=baseSpeed;player.facing=1;}
+ }
 
  player.x+=player.vx*dt;
 
- if(keys.jump&&player.grounded){
-  player.vy=-12.5;
+ // Jump + Double Jump
+ if(keys.jump && player.jumpsLeft>0){
+  player.vy=player.jumpsLeft===2?-12.4:-11.2;
   player.grounded=false;
+  player.jumpsLeft--;
+  playSound('jump');
+  spawnParticles(player.x+player.w/2,player.y+player.h,'#70efff',10);
  }
-
  keys.jump=false;
 
- player.vy+=gravity*dt;
+ if(player.dashTime<=0){
+  player.vy+=gravity*dt;
+ }
  player.y+=player.vy*dt;
 
  player.grounded=false;
 
+ // Platform collisions
  platforms.forEach(p=>{
   const oldBottom=player.y+player.h-player.vy*dt;
   const newBottom=player.y+player.h;
@@ -888,18 +1170,68 @@ function updateGame(dt){
   if(
    player.x+player.w>p.x &&
    player.x<p.x+p.w &&
-   oldBottom<=p.y+5 &&
+   oldBottom<=p.y+8 &&
    newBottom>=p.y &&
    player.vy>=0
   ){
    player.y=p.y-player.h;
    player.vy=0;
    player.grounded=true;
+   player.jumpsLeft=2;
   }
  });
 
+ // Jump Pads
+ jumpPads.forEach(pad=>{
+  if(
+   player.x+player.w>pad.x &&
+   player.x<pad.x+pad.w &&
+   player.y+player.h>=pad.y &&
+   player.y+player.h<=pad.y+pad.h+10 &&
+   player.vy>=0
+  ){
+   player.vy=-16.5;
+   player.grounded=false;
+   player.jumpsLeft=1;
+   playSound('pad');
+   spawnParticles(pad.x+pad.w/2,pad.y,'#ffcf5a',18);
+   addFloatingText(pad.x,pad.y-12,'پرش سوپر! 🚀','#ffcf5a');
+  }
+ });
+
+ // Powerups
+ powerups.forEach(pw=>{
+  if(pw.taken)return;
+  const dx=player.x+player.w/2-pw.x;
+  const dy=player.y+player.h/2-pw.y;
+  if(Math.hypot(dx,dy)<28){
+   pw.taken=true;
+   playSound('star');
+   if(pw.type==='shield'){
+    player.shield=true;
+    addFloatingText(pw.x,pw.y,'🛡️ سپر فعال شد!','#35e0ff');
+   }else{
+    player.magnet=320;
+    addFloatingText(pw.x,pw.y,'🧲 آهنربای ستاره!','#ff75b5');
+   }
+   spawnParticles(pw.x,pw.y,'#35e0ff',18);
+   updateStats();
+  }
+ });
+
+ if(player.magnet>0)player.magnet-=dt;
+
+ // Collectibles (Stars & Gems)
  collectibles.forEach(c=>{
   if(c.taken)return;
+
+  if(player.magnet>0){
+   const dist=Math.hypot(player.x-c.x,player.y-c.y);
+   if(dist<190){
+    c.x+=(player.x+player.w/2-c.x)*0.12*dt;
+    c.y+=(player.y+player.h/2-c.y)*0.12*dt;
+   }
+  }
 
   const dx=player.x+player.w/2-c.x;
   const dy=player.y+player.h/2-c.y;
@@ -907,50 +1239,135 @@ function updateGame(dt){
   if(Math.hypot(dx,dy)<28){
    c.taken=true;
    stars++;
-   score+=10;
+   const pts=(c.type==='gem'?25:10)*combo;
+   score+=pts;
+   playSound('star');
+   spawnParticles(c.x,c.y,c.type==='gem'?'#00f5d4':'#ffdf5a',15);
+   addFloatingText(c.x,c.y-10,'+'+toFa(pts),c.type==='gem'?'#00f5d4':'#ffdf5a');
    updateStats();
-   document.getElementById('gameMessage').textContent='⭐ یک ستاره جمع کردی! عالیه!';
+   document.getElementById('gameMessage').textContent=
+    c.type==='gem'?'💎 الماس فرمول گرفتی! امتیاز ویژه!':'⭐ عالیه! ستاره ریاضی جمع شد!';
   }
  });
 
- if(player.y>H+100){
-  player.x=55;
-  player.y=250;
-  player.vy=0;
-  document.getElementById('gameMessage').textContent='دوباره تلاش کن! از سکوها با دقت بپر.';
+ // Spikes
+ spikes.forEach(s=>{
+  if(
+   player.x+player.w-4>s.x &&
+   player.x+4<s.x+s.w &&
+   player.y+player.h>s.y &&
+   player.y<s.y+s.h
+  ){
+   hurtPlayer('⚠️ به تیغ‌های لیزری برخورد کردی!');
+  }
+ });
+
+ // Enemies
+ enemies.forEach(en=>{
+  if(!en.alive)return;
+  en.x+=en.vx*dt;
+  if(en.x<en.minX){en.x=en.minX;en.vx*=-1;}
+  if(en.x>en.maxX){en.x=en.maxX;en.vx*=-1;}
+
+  if(
+   player.x+player.w-3>en.x &&
+   player.x+3<en.x+en.w &&
+   player.y+player.h>en.y &&
+   player.y<en.y+en.h
+  ){
+   // Stomp from above
+   if(player.vy>0 && player.y+player.h-player.vy*dt<=en.y+14){
+    en.alive=false;
+    player.vy=-11;
+    combo=Math.min(combo+1,5);
+    const pts=30*combo;
+    score+=pts;
+    playSound('stomp');
+    spawnParticles(en.x+en.w/2,en.y+en.h/2,'#ff5c8a',20);
+    addFloatingText(en.x,en.y,'ربات نابود شد! +'+toFa(pts),'#ff85a1');
+    updateStats();
+    document.getElementById('gameMessage').textContent='🔥 آفرین! ربات خطا را نابود کردی و کمبو بالا رفت!';
+   }else{
+    hurtPlayer('👾 ربات خطای ریاضی به تو برخورد کرد!');
+   }
+  }
+ });
+
+ // Trail
+ if(Math.abs(player.vx)>0.5 || Math.abs(player.vy)>1){
+  player.trail.push({x:player.x,y:player.y,life:8});
+  if(player.trail.length>7)player.trail.shift();
+ }
+ player.trail.forEach(t=>t.life-=dt);
+ player.trail=player.trail.filter(t=>t.life>0);
+
+ // Update Particles & Floating texts
+ particles.forEach(pt=>{
+  pt.x+=pt.vx*dt;
+  pt.y+=pt.vy*dt;
+  pt.vy+=0.12*dt;
+  pt.life-=dt;
+ });
+ particles=particles.filter(pt=>pt.life>0);
+
+ floatingTexts.forEach(ft=>{
+  ft.y-=0.9*dt;
+  ft.life-=dt;
+ });
+ floatingTexts=floatingTexts.filter(ft=>ft.life>0);
+
+ if(screenShake>0)screenShake=Math.max(0,screenShake-dt);
+
+ // Fall into pit
+ if(player.y>H+90){
+  hurtPlayer('⚠️ به پایین سقوط کردی! با پرش دوتایی از سکوها بپر.');
  }
 
- if(player.x>gateX-40){
+ // Reach Gate
+ if(player.x>gateX-38){
   showQuestion();
  }
 
- camera=Math.max(0,Math.min(player.x-220,gateX-W+100));
+ camera=Math.max(0,Math.min(player.x-240,gateX-W+130));
 }
 
 function drawGame(){
  ctx.clearRect(0,0,W,H);
 
+ ctx.save();
+ if(screenShake>0){
+  ctx.translate((Math.random()-.5)*screenShake,(Math.random()-.5)*screenShake);
+ }
+
  const sky=ctx.createLinearGradient(0,0,0,H);
- sky.addColorStop(0,'#101d48');
- sky.addColorStop(1,'#283a69');
+ sky.addColorStop(0,'#0c1638');
+ sky.addColorStop(1,'#1e2e5c');
  ctx.fillStyle=sky;
  ctx.fillRect(0,0,W,H);
 
  // Stars in the sky
- for(let i=0;i<45;i++){
+ for(let i=0;i<50;i++){
   const x=((i*127-camera*.15)%W+W)%W;
-  const y=(i*67)%210;
-  ctx.fillStyle='rgba(255,255,255,.65)';
+  const y=(i*67)%230;
+  const alpha=.35+.45*Math.sin(worldTick*.05+i);
+  ctx.fillStyle=`rgba(255,255,255,${alpha})`;
   ctx.beginPath();
-  ctx.arc(x,y,1.5,0,Math.PI*2);
+  ctx.arc(x,y,(i%3===0)?2:1.3,0,Math.PI*2);
   ctx.fill();
  }
 
- // Decorative planets
- ctx.fillStyle='rgba(117,108,255,.2)';
+ // Decorative planets & math symbols in background
+ ctx.fillStyle='rgba(124,92,255,.16)';
  ctx.beginPath();
- ctx.arc(690-camera*.08,95,45,0,Math.PI*2);
+ ctx.arc(690-camera*.08,90,48,0,Math.PI*2);
  ctx.fill();
+
+ ctx.fillStyle='rgba(0,217,255,.1)';
+ ctx.font='bold 34px Arial';
+ ['π','∑','√','∞','Δ'].forEach((sym,idx)=>{
+  const sx=((idx*220-camera*.22)%W+W)%W;
+  ctx.fillText(sym,sx,70+(idx%3)*45);
+ });
 
  ctx.save();
  ctx.translate(-camera,0);
@@ -958,67 +1375,185 @@ function drawGame(){
  // Platforms
  platforms.forEach(p=>{
   const gradient=ctx.createLinearGradient(0,p.y,0,p.y+p.h);
-  gradient.addColorStop(0,'#53e4c1');
-  gradient.addColorStop(1,'#236b82');
+  gradient.addColorStop(0,p.moveY||p.moveX?'#5ce1e6':'#53e4c1');
+  gradient.addColorStop(1,'#205870');
 
   ctx.fillStyle=gradient;
-  roundRect(ctx,p.x,p.y,p.w,p.h,8,true);
+  roundRect(ctx,p.x,p.y,p.w,p.h,9,true);
 
-  ctx.fillStyle='rgba(255,255,255,.25)';
-  ctx.fillRect(p.x+8,p.y+5,p.w-16,3);
+  ctx.fillStyle='rgba(255,255,255,.28)';
+  ctx.fillRect(p.x+8,p.y+4,p.w-16,3);
  });
 
- // Collectibles
+ // Jump Pads
+ jumpPads.forEach(pad=>{
+  ctx.fillStyle='#ff9f1c';
+  roundRect(ctx,pad.x,pad.y,pad.w,pad.h,5,true);
+  ctx.fillStyle='#ffe66d';
+  ctx.fillRect(pad.x+5,pad.y+2,pad.w-10,4);
+ });
+
+ // Spikes
+ spikes.forEach(s=>{
+  ctx.fillStyle='#ff3b6b';
+  for(let i=0;i<3;i++){
+   const bx=s.x+i*(s.w/3);
+   ctx.beginPath();
+   ctx.moveTo(bx,s.y+s.h);
+   ctx.lineTo(bx+s.w/6,s.y);
+   ctx.lineTo(bx+s.w/3,s.y+s.h);
+   ctx.closePath();
+   ctx.fill();
+  }
+ });
+
+ // Powerups
+ powerups.forEach(pw=>{
+  if(pw.taken)return;
+  const bob=Math.sin(worldTick*.09)*4;
+  ctx.fillStyle=pw.type==='shield'?'#35e0ff':'#ff75b5';
+  ctx.beginPath();
+  ctx.arc(pw.x,pw.y+bob,13,0,Math.PI*2);
+  ctx.fill();
+  ctx.fillStyle='#081226';
+  ctx.font='14px Arial';
+  ctx.textAlign='center';
+  ctx.fillText(pw.type==='shield'?'🛡️':'🧲',pw.x,pw.y+bob+5);
+ });
+
+ // Collectibles (Stars & Gems)
  collectibles.forEach(c=>{
   if(c.taken)return;
+  const bob=Math.sin(worldTick*.08+c.x)*3.5;
 
-  ctx.fillStyle='#ffdf5a';
-  ctx.beginPath();
-  ctx.arc(c.x,c.y,10,0,Math.PI*2);
-  ctx.fill();
+  if(c.type==='gem'){
+   ctx.fillStyle='#00f5d4';
+   ctx.beginPath();
+   ctx.moveTo(c.x,c.y-12+bob);
+   ctx.lineTo(c.x+11,c.y+bob);
+   ctx.lineTo(c.x,c.y+12+bob);
+   ctx.lineTo(c.x-11,c.y+bob);
+   ctx.closePath();
+   ctx.fill();
+  }else{
+   ctx.fillStyle='#ffdf5a';
+   ctx.beginPath();
+   ctx.arc(c.x,c.y+bob,10,0,Math.PI*2);
+   ctx.fill();
 
-  ctx.fillStyle='#fff8bd';
-  ctx.beginPath();
-  ctx.arc(c.x-3,c.y-3,3,0,Math.PI*2);
-  ctx.fill();
+   ctx.fillStyle='#fff8bd';
+   ctx.beginPath();
+   ctx.arc(c.x-3,c.y-3+bob,3,0,Math.PI*2);
+   ctx.fill();
+  }
  });
 
- // Gate
- ctx.fillStyle='#8c62ff';
- roundRect(ctx,gateX,260,48,95,9,true);
- ctx.fillStyle='#d5c2ff';
- ctx.font='bold 23px Arial';
- ctx.textAlign='center';
- ctx.fillText('?',gateX+24,315);
+ // Enemies
+ enemies.forEach(en=>{
+  if(!en.alive)return;
+  ctx.fillStyle='#ff476f';
+  roundRect(ctx,en.x,en.y,en.w,en.h,8,true);
 
- // Player
- ctx.fillStyle='#ffe36b';
- roundRect(ctx,player.x,player.y,player.w,player.h,9,true);
+  // Robot eyes
+  ctx.fillStyle='#fff';
+  ctx.fillRect(en.x+5,en.y+9,7,6);
+  ctx.fillRect(en.x+18,en.y+9,7,6);
+  ctx.fillStyle='#1b0812';
+  ctx.fillRect(en.x+7,en.y+11,3,3);
+  ctx.fillRect(en.x+20,en.y+11,3,3);
 
- ctx.fillStyle='#28345b';
+  // Antenna
+  ctx.strokeStyle='#ff9ebb';
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(en.x+en.w/2,en.y);
+  ctx.lineTo(en.x+en.w/2,en.y-7);
+  ctx.stroke();
+ });
+
+ // Gate Portal
+ const pulse=Math.sin(worldTick*.08)*4;
+ ctx.fillStyle='#7c5cff';
+ roundRect(ctx,gateX,250,54,105,12,true);
+ ctx.strokeStyle='#00d9ff';
+ ctx.lineWidth=3;
+ roundRect(ctx,gateX-3,247,60,111,14,false);
+
+ ctx.fillStyle='rgba(0,217,255,.3)';
  ctx.beginPath();
- ctx.arc(player.x+10,player.y+14,3,0,Math.PI*2);
- ctx.arc(player.x+22,player.y+14,3,0,Math.PI*2);
+ ctx.arc(gateX+27,302,18+pulse,0,Math.PI*2);
  ctx.fill();
 
- ctx.strokeStyle='#28345b';
- ctx.lineWidth=2;
- ctx.beginPath();
- ctx.arc(player.x+16,player.y+22,5,0,Math.PI);
- ctx.stroke();
+ ctx.fillStyle='#ffffff';
+ ctx.font='bold 25px Arial';
+ ctx.textAlign='center';
+ ctx.fillText('?',gateX+27,311);
 
- // Player glow
- ctx.strokeStyle='rgba(255,227,107,.4)';
- ctx.lineWidth=3;
- ctx.strokeRect(player.x-3,player.y-3,player.w+6,player.h+6);
+ // Player Trail
+ player.trail.forEach(t=>{
+  ctx.fillStyle=`rgba(255,227,107,${t.life/24})`;
+  roundRect(ctx,t.x,t.y,player.w,player.h,9,true);
+ });
+
+ // Player
+ if(player.invuln<=0 || Math.floor(player.invuln)%2===0){
+  ctx.fillStyle='#ffe36b';
+  roundRect(ctx,player.x,player.y,player.w,player.h,9,true);
+
+  const eyeOffset=player.facing===1?2:-2;
+  ctx.fillStyle='#28345b';
+  ctx.beginPath();
+  ctx.arc(player.x+11+eyeOffset,player.y+14,3,0,Math.PI*2);
+  ctx.arc(player.x+22+eyeOffset,player.y+14,3,0,Math.PI*2);
+  ctx.fill();
+
+  ctx.strokeStyle='#28345b';
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.arc(player.x+16+eyeOffset,player.y+22,5,0,Math.PI);
+  ctx.stroke();
+
+  if(player.shield){
+   ctx.strokeStyle='rgba(53,224,255,.85)';
+   ctx.lineWidth=3;
+   ctx.beginPath();
+   ctx.arc(player.x+player.w/2,player.y+player.h/2,26,0,Math.PI*2);
+   ctx.stroke();
+  }
+ }
+
+ // Particles
+ particles.forEach(pt=>{
+  ctx.fillStyle=pt.color;
+  ctx.globalAlpha=Math.max(0,pt.life/pt.maxLife);
+  ctx.beginPath();
+  ctx.arc(pt.x,pt.y,pt.size,0,Math.PI*2);
+  ctx.fill();
+ });
+ ctx.globalAlpha=1;
+
+ // Floating Texts
+ floatingTexts.forEach(ft=>{
+  ctx.fillStyle=ft.color;
+  ctx.font='bold 14px Vazirmatn';
+  ctx.textAlign='center';
+  ctx.fillText(ft.text,ft.x,ft.y);
+ });
 
  ctx.restore();
+ ctx.restore();
 
- // Ground label
- ctx.fillStyle='rgba(255,255,255,.7)';
- ctx.font='13px Vazirmatn';
- ctx.textAlign='center';
- ctx.fillText('دنیای بیداری فرمول',W/2,25);
+ // Top HUD Progress Bar inside Canvas
+ const prog=Math.min(1,Math.max(0,player.x/gateX));
+ ctx.fillStyle='rgba(255,255,255,.15)';
+ roundRect(ctx,W/2-110,12,220,8,4,true);
+ ctx.fillStyle='#00d9ff';
+ roundRect(ctx,W/2-110,12,220*prog,8,4,true);
+
+ ctx.fillStyle='rgba(255,255,255,.75)';
+ ctx.font='12px Vazirmatn';
+ ctx.textAlign='right';
+ ctx.fillText('رکورد: '+toFa(highScore),W-16,24);
 }
 
 function roundRect(c,x,y,w,h,r,fill){
@@ -1028,18 +1563,37 @@ function roundRect(c,x,y,w,h,r,fill){
  else c.stroke();
 }
 
+function generateProceduralQuestion(){
+ if(Math.random()<0.6){
+  return questionBank[Math.floor(Math.random()*questionBank.length)];
+ }
+ const a=2+Math.floor(Math.random()*(4+level*2));
+ const b=2+Math.floor(Math.random()*(4+level*2));
+ const op=level>=3&&Math.random()>.4?'×':'+';
+ const ans=op==='×'?a*b:a+b;
+ const opts=new Set([ans]);
+ while(opts.size<4){
+  const delta=(Math.floor(Math.random()*7)-3)||1;
+  opts.add(Math.max(1,ans+delta));
+ }
+ const arr=Array.from(opts);
+ return {
+  q:`حاصل ${toFa(a)} ${op} ${toFa(b)} چند می‌شود؟`,
+  a:arr.map(x=>toFa(x)),
+  correct:arr.indexOf(ans)
+ };
+}
+
 function showQuestion(){
  questionActive=true;
+ activeQuestionObj=generateProceduralQuestion();
 
- currentQuestion=Math.min(level-1,questions.length-1);
- const q=questions[currentQuestion];
-
- document.getElementById('questionText').textContent=q.q;
+ document.getElementById('questionText').textContent=activeQuestionObj.q;
 
  const options=document.getElementById('questionOptions');
  options.innerHTML='';
 
- q.a.forEach((answer,index)=>{
+ activeQuestionObj.a.forEach((answer,index)=>{
   const button=document.createElement('button');
   button.textContent=answer;
   button.addEventListener('click',()=>answerQuestion(index));
@@ -1047,22 +1601,48 @@ function showQuestion(){
  });
 
  document.getElementById('questionBox').classList.add('show');
- document.getElementById('gameMessage').textContent='برای عبور از دروازه، سؤال را حل کن!';
+ document.getElementById('gameMessage').textContent='⏳ پیش از تمام شدن زمان، پاسخ درست را انتخاب کن!';
+
+ qTimeLeft=100;
+ const bar=document.getElementById('qTimerBar');
+ bar.style.width='100%';
+ if(qTimerInterval)clearInterval(qTimerInterval);
+
+ qTimerInterval=setInterval(()=>{
+  if(!questionActive){clearInterval(qTimerInterval);return;}
+  qTimeLeft-=1.2;
+  bar.style.width=Math.max(0,qTimeLeft)+'%';
+  if(qTimeLeft<=0){
+   clearInterval(qTimerInterval);
+   combo=1;
+   updateStats();
+   document.getElementById('gameMessage').textContent='⏰ زمان تمام شد! یک سؤال جدید باز شد.';
+   showQuestion();
+  }
+ },120);
 }
 
 function answerQuestion(index){
- const q=questions[currentQuestion];
+ if(qTimerInterval)clearInterval(qTimerInterval);
  const box=document.getElementById('questionBox');
 
- if(index===q.correct){
-  score+=50;
+ if(index===activeQuestionObj.correct){
+  playSound('win');
+  const timeBonus=Math.round(qTimeLeft/5)*combo;
+  score+=50*combo+timeBonus;
   stars+=2;
+  combo=Math.min(5,combo+1);
   level++;
-  updateStats();
 
+  if(score>highScore){
+   highScore=score;
+   localStorage.setItem('nova-math-hi',highScore);
+  }
+
+  updateStats();
   box.classList.remove('show');
 
-  if(level>questions.length){
+  if(level>MAX_LEVEL){
    finishGame(true);
    return;
   }
@@ -1071,22 +1651,32 @@ function answerQuestion(index){
   questionActive=false;
 
   document.getElementById('gameMessage').textContent=
-   'آفرین! دروازه باز شد. وارد مرحله بعد شدی! 🚀';
+   `🎉 آفرین! دروازه باز شد و پاداش سرعت (+${toFa(timeBonus)}) گرفتی! مرحله ${toFa(level)}`;
 
  }else{
+  playSound('hurt');
+  combo=1;
+  score=Math.max(0,score-10);
+  updateStats();
   document.getElementById('gameMessage').textContent=
-   'این جواب درست نیست. دوباره فکر کن و امتحان کن!';
+   '❌ این جواب درست نیست! کمبو صفر شد، دوباره دقت کن!';
  }
 }
 
 function finishGame(won){
  gameRunning=false;
+ if(qTimerInterval)clearInterval(qTimerInterval);
+
+ if(score>highScore){
+  highScore=score;
+  localStorage.setItem('nova-math-hi',highScore);
+ }
 
  document.getElementById('overTitle').textContent=
-  won?'🏆 قهرمان ریاضی شدی!':'✨ بازی تمام شد!';
+  won?'🏆 قهرمان کهکشان ریاضی شدی!':'💥 ماجراجویی به پایان رسید!';
 
- document.getElementById('overText').textContent=
-  'امتیاز نهایی: '+score+' | ستاره‌ها: '+stars;
+ document.getElementById('overText').innerHTML=
+  `امتیاز نهایی: <b>${toFa(score)}</b> | ستاره‌ها: <b>${toFa(stars)}</b><br>بیشترین امتیاز تو: <b>${toFa(highScore)}</b>`;
 
  document.getElementById('gameOver').classList.add('show');
 }
@@ -1097,13 +1687,14 @@ function finishGame(won){
 document.addEventListener('keydown',e=>{
  if(!document.getElementById('gameOverlay').classList.contains('show'))return;
 
- if(['ArrowLeft','ArrowRight','ArrowUp',' '].includes(e.key)){
+ if(['ArrowLeft','ArrowRight','ArrowUp',' ','Shift'].includes(e.key)){
   e.preventDefault();
  }
 
  if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a')keys.left=true;
  if(e.key==='ArrowRight'||e.key.toLowerCase()==='d')keys.right=true;
- if(e.key==='ArrowUp'||e.key===' ')keys.jump=true;
+ if((e.key==='ArrowUp'||e.key===' '||e.key.toLowerCase()==='w')&&!e.repeat)keys.jump=true;
+ if(e.key==='Shift'&&!e.repeat)keys.dash=true;
 });
 
 document.addEventListener('keyup',e=>{
@@ -1137,6 +1728,10 @@ document.getElementById('jumpBtn').addEventListener('pointerdown',e=>{
  keys.jump=true;
 });
 
+document.getElementById('dashBtn').addEventListener('pointerdown',e=>{
+ e.preventDefault();
+ keys.dash=true;
+});
 </script>
 </body>
 </html>
