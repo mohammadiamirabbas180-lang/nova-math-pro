@@ -3,679 +3,1140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080f20">
-<meta name="google-site-verification" content="vdTSlWyolRsGCWy1gc_8glOuSz7NFiOBYA--8tGNGOU">
-<title>NOVA MATH PRO | امیرعباس محمدی</title>
+<meta name="theme-color" content="#080d1d">
+<meta name="description" content="NOVA MATH PRO؛ ابزار هوشمند تحلیل اعداد، آموزش ریاضی و بازی بیداری فرمول">
+<title>NOVA MATH PRO | دنیای شگفت‌انگیز ریاضی</title>
 
 <style>
-:root{
- --bg:#080f20;--panel:#111c33;--panel2:#192842;
- --text:#f2f6ff;--muted:#91a2bd;--accent:#21d4c2;
- --accent2:#36a7ff;--border:#344765;
- --success:#32d6a0;--danger:#ff6b85;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
-body{
- margin:0;min-height:100vh;
- background:radial-gradient(circle at 5% 50%,#29205b55,transparent 35%),
- radial-gradient(circle at 95% 55%,#087d7130,transparent 35%),var(--bg);
- color:var(--text);font-family:Tahoma,Arial,sans-serif;transition:background .3s;
-}
-button,input{font-family:inherit}
-header{
- min-height:65px;background:var(--panel);border-bottom:1px solid var(--border);
- display:flex;align-items:center;justify-content:space-between;
- gap:12px;padding:10px 6%;position:sticky;top:0;z-index:20;
-}
-.logo{display:flex;align-items:center;gap:10px;direction:ltr;font-weight:900;font-size:19px}
-.logo span{color:var(--accent)}
-.logo-icon{
- width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
- background:linear-gradient(135deg,var(--accent),var(--accent2));color:#071525;font-size:21px;
-}
-.creator{background:var(--panel2);color:var(--accent);padding:9px 13px;border-radius:30px;font-size:11px;font-weight:bold}
-.nav-links{display:flex;gap:8px;flex-wrap:wrap}
-.nav-links a{
- color:var(--text);text-decoration:none;font-size:11px;padding:9px 12px;
- border:1px solid var(--border);border-radius:10px;background:var(--panel2);
-}
-.nav-links a:hover{border-color:var(--accent);color:var(--accent)}
-.container{max-width:1250px;margin:auto;padding:32px 22px 55px}
-.hero{text-align:center;margin-bottom:30px}
-.hero-icon{font-size:42px;margin-bottom:10px}
-.hero h1{font-size:clamp(25px,4vw,39px);margin:10px 0}
-.hero h1 span{color:var(--accent)}
-.hero p{color:var(--muted);font-size:12px;line-height:2.2}
-.workspace{
- display:grid;grid-template-columns:minmax(300px,.85fr) minmax(400px,1.15fr);
- gap:18px;align-items:stretch;
-}
-.theme-panel,.main-panel,.learning-section{
- background:var(--panel);border:1px solid var(--border);
- border-radius:20px;padding:20px;min-width:0;box-shadow:0 15px 45px #0002;
-}
-.theme-panel{display:flex;flex-direction:column}
-.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.panel-heading h3{font-size:17px;margin:0}
-.panel-heading .icon{
- width:35px;height:35px;border-radius:10px;display:grid;
- place-items:center;background:var(--panel2);
-}
-.panel-description{color:var(--muted);font-size:11px;line-height:2;margin:10px 0 16px}
-.theme-grid{
- display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;
- max-height:460px;overflow-y:auto;padding:4px;scrollbar-width:thin;
- scrollbar-color:var(--accent) var(--panel2);
-}
-.theme-option{
- display:flex;align-items:center;justify-content:space-between;gap:9px;
- min-height:76px;padding:8px;background:var(--panel2);
- border:1px solid var(--border);border-radius:13px;color:var(--text);
- cursor:pointer;font-size:11px;font-weight:bold;transition:.22s;text-align:right;
-}
-.theme-option:hover{border-color:var(--accent);transform:translateY(-3px)}
-.theme-option.active{
- border:1px solid var(--accent);
- box-shadow:0 0 15px color-mix(in srgb,var(--accent) 35%,transparent);
- background:color-mix(in srgb,var(--accent) 10%,var(--panel2));
-}
-.theme-info{display:flex;align-items:center;gap:7px;min-width:0}
-.theme-name{line-height:1.8}
-.theme-art{
- width:53px;height:53px;min-width:53px;border-radius:11px;
- overflow:hidden;display:grid;place-items:center;border:1px solid #ffffff25;
-}
-.theme-art img{width:100%;height:100%;object-fit:cover}
-.theme-footer{
- border-top:1px solid var(--border);padding-top:12px;margin-top:auto;
- color:var(--muted);font-size:10px;text-align:center;
-}
-.main-panel{padding:23px}
-.section-title{display:flex;align-items:center;gap:10px;font-size:17px;margin:0 0 10px}
-.section-title .icon{
- width:38px;height:38px;display:grid;place-items:center;
- background:var(--panel2);border-radius:11px;
-}
-.description{color:var(--muted);font-size:11px;line-height:2;margin-bottom:25px}
-.field-label{display:block;font-size:12px;font-weight:bold;margin-bottom:12px}
-.number-input{
- width:100%;padding:17px;border-radius:12px;background:var(--panel2);
- border:1px solid var(--border);color:var(--text);font-size:17px;outline:none;transition:.2s;
-}
-.number-input:focus{
- border-color:var(--accent);
- box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 15%,transparent);
-}
-.number-input::placeholder{color:var(--muted)}
-.hint{color:var(--muted);font-size:10px;margin-top:10px}
-.options-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:30px 0 14px}
-.options-heading h3{font-size:13px}
-.text-btn{
- background:var(--panel2);border:1px solid var(--border);
- border-radius:9px;color:var(--text);padding:8px 11px;font-size:10px;cursor:pointer;
-}
-.options-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.option{
- min-height:54px;display:flex;align-items:center;justify-content:space-between;
- gap:8px;padding:11px;background:var(--panel2);
- border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:.2s;
-}
-.option:hover{border-color:var(--accent);transform:translateY(-2px)}
-.option.selected{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--panel2))}
-.option span{font-size:11px;font-weight:bold;line-height:1.8}
-.option input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
-.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
-.btn{
- background:var(--panel2);border:1px solid var(--border);border-radius:10px;
- padding:12px 14px;color:var(--text);font-size:11px;font-weight:bold;cursor:pointer;transition:.2s;
-}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.2)}
-.btn.primary{background:linear-gradient(110deg,var(--accent),var(--accent2));color:#071725;border:0}
-.error{color:var(--danger);font-size:11px;margin-top:12px;min-height:17px}
-.results{display:none;margin-top:28px}
-.results.show{display:block;animation:appear .4s ease}
-@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.results-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:15px}
-.results-header h2{font-size:17px}
-.result-number{
- display:flex;align-items:center;gap:12px;background:var(--panel2);
- border:1px solid var(--border);border-radius:12px;padding:15px;margin-bottom:14px;
-}
-.result-number span{color:var(--muted);font-size:11px}
-.result-number strong{color:var(--accent);font-size:24px;direction:ltr}
-.results-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.result-card{background:var(--panel2);border:1px solid var(--border);border-radius:13px;padding:15px;min-width:0}
-.result-card h4{color:var(--accent);font-size:12px;margin:0 0 12px}
-.result-card p{font-size:11px;line-height:2.2;margin:0;overflow-wrap:anywhere}
-.result-card.full{grid-column:1/-1}
-.big{font-size:21px;font-weight:bold;direction:ltr;text-align:right}
-.ltr{direction:ltr;text-align:right;line-height:2.5}
-.good{color:var(--success)}
-.bad{color:var(--danger)}
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
 
-/* بخش آموزش */
-.learning-section{margin-top:22px;padding:24px}
-.learning-intro{text-align:center;margin-bottom:22px}
-.learning-intro .book-icon{font-size:35px}
-.learning-intro h2{font-size:22px;margin:8px 0;color:var(--accent)}
-.learning-intro p{
- font-size:12px;line-height:2.2;color:var(--muted);
- max-width:720px;margin:0 auto;
+:root{
+ --bg:#080d1d;
+ --panel:#111a32;
+ --panel2:#192442;
+ --text:#f5f7ff;
+ --muted:#a7b3d1;
+ --primary:#7c5cff;
+ --secondary:#00d9ff;
+ --accent:#ffcf5a;
+ --border:rgba(255,255,255,.1);
+ --shadow:0 15px 45px rgba(0,0,0,.25);
 }
-.lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.lesson{background:var(--panel2);border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.lesson summary{
- list-style:none;cursor:pointer;padding:15px;display:flex;
- align-items:center;justify-content:space-between;gap:10px;font-size:12px;font-weight:bold;
+
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:'Vazirmatn',sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ min-height:100vh;
+ transition:.3s;
 }
-.lesson summary::-webkit-details-marker{display:none}
-.lesson summary:after{content:"＋";color:var(--accent);font-size:18px}
-.lesson[open] summary:after{content:"−"}
-.lesson summary:hover{color:var(--accent)}
-.lesson-number{
- display:inline-grid;place-items:center;width:30px;height:30px;
- min-width:30px;border-radius:9px;background:color-mix(in srgb,var(--accent) 15%,var(--panel));
- color:var(--accent);margin-left:8px;
+
+button,input{font-family:inherit}
+
+button{cursor:pointer}
+
+.background-glow{
+ position:fixed;
+ inset:0;
+ z-index:-1;
+ pointer-events:none;
+ background:
+ radial-gradient(circle at 15% 15%,rgba(124,92,255,.15),transparent 35%),
+ radial-gradient(circle at 85% 70%,rgba(0,217,255,.1),transparent 35%);
 }
-.lesson-content{border-top:1px solid var(--border);padding:15px;font-size:11px;line-height:2.3;color:var(--text)}
-.lesson-content h4{color:var(--accent);font-size:11px;margin:13px 0 4px}
-.lesson-content h4:first-child{margin-top:0}
-.lesson-content p{margin:4px 0 10px;color:var(--muted)}
-.example{
- background:var(--panel);border:1px solid var(--border);border-radius:10px;
- padding:10px;margin:8px 0;text-align:center;font-weight:bold;color:var(--accent);direction:ltr;
+
+header{
+ padding:25px 6%;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+ flex-wrap:wrap;
+ border-bottom:1px solid var(--border);
 }
-.python-note{
- border-right:3px solid var(--accent2);padding:8px 11px;
- background:color-mix(in srgb,var(--accent2) 8%,var(--panel));
- border-radius:8px;margin-top:8px;
+
+.logo{
+ font-size:25px;
+ font-weight:900;
+ letter-spacing:1px;
 }
-.learning-tip{
- margin-top:18px;padding:14px;border-radius:12px;
- background:color-mix(in srgb,var(--accent) 9%,var(--panel2));
- border:1px solid color-mix(in srgb,var(--accent) 30%,var(--border));
- font-size:11px;line-height:2.2;color:var(--muted);
+
+.logo span{color:var(--secondary)}
+
+.creator{
+ color:var(--muted);
+ font-size:13px;
 }
-.learning-tip strong{color:var(--accent)}
-footer{text-align:center;color:var(--muted);font-size:11px;line-height:2.5;padding:30px 10px}
-footer strong{color:var(--accent)}
-@media(max-width:850px){.workspace{grid-template-columns:1fr}.theme-grid{max-height:360px}}
+
+.container{
+ width:min(1100px,92%);
+ margin:auto;
+}
+
+.hero{
+ text-align:center;
+ padding:65px 15px 45px;
+}
+
+.hero h1{
+ font-size:clamp(30px,6vw,55px);
+ margin:0 0 12px;
+ font-weight:900;
+}
+
+.hero h1 span{
+ background:linear-gradient(90deg,var(--secondary),var(--primary),#ff75b5);
+ -webkit-background-clip:text;
+ color:transparent;
+}
+
+.hero p{
+ color:var(--muted);
+ max-width:650px;
+ margin:12px auto;
+ line-height:2;
+}
+
+.section{
+ background:var(--panel);
+ border:1px solid var(--border);
+ border-radius:22px;
+ padding:25px;
+ margin:25px 0;
+ box-shadow:var(--shadow);
+}
+
+.section-title{
+ font-size:22px;
+ font-weight:800;
+ margin:0 0 20px;
+}
+
+.section-title span{color:var(--secondary)}
+
+.input-row{
+ display:flex;
+ gap:12px;
+ flex-wrap:wrap;
+}
+
+input{
+ flex:1;
+ min-width:180px;
+ padding:15px;
+ border:1px solid var(--border);
+ border-radius:13px;
+ background:var(--panel2);
+ color:var(--text);
+ outline:none;
+ font-size:16px;
+}
+
+input:focus{border-color:var(--secondary)}
+
+.btn{
+ border:0;
+ border-radius:13px;
+ padding:13px 22px;
+ font-size:15px;
+ font-weight:800;
+ color:white;
+ background:linear-gradient(135deg,var(--primary),#5540d8);
+ transition:.2s;
+}
+
+.btn:hover{
+ transform:translateY(-3px);
+ filter:brightness(1.15);
+}
+
+.btn.secondary{
+ background:linear-gradient(135deg,#008eae,#00c5db);
+}
+
+.btn.gold{
+ background:linear-gradient(135deg,#ffb52e,#e77c13);
+ color:#241300;
+}
+
+.results{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:13px;
+ margin-top:20px;
+}
+
+.result-card{
+ padding:17px;
+ background:var(--panel2);
+ border:1px solid var(--border);
+ border-radius:15px;
+}
+
+.result-card small{
+ display:block;
+ color:var(--muted);
+ margin-bottom:7px;
+}
+
+.result-card strong{
+ font-size:19px;
+ overflow-wrap:anywhere;
+}
+
+.status{
+ margin-top:15px;
+ color:var(--secondary);
+ line-height:2;
+}
+
+.learning-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ gap:14px;
+}
+
+.learning-card{
+ background:var(--panel2);
+ border:1px solid var(--border);
+ padding:18px;
+ border-radius:15px;
+ line-height:2;
+}
+
+.learning-card h3{color:var(--secondary)}
+
+.theme-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(115px,1fr));
+ gap:12px;
+}
+
+.theme-option{
+ padding:12px;
+ border:1px solid var(--border);
+ background:var(--panel2);
+ border-radius:13px;
+ color:var(--text);
+ text-align:center;
+}
+
+.theme-preview{
+ height:30px;
+ border-radius:8px;
+ margin-bottom:8px;
+}
+
+.theme-option.active{outline:2px solid var(--secondary)}
+
+.game-promo{
+ position:relative;
+ overflow:hidden;
+ text-align:center;
+ padding:38px 22px;
+ border-radius:22px;
+ border:1px solid rgba(0,217,255,.3);
+ background:
+ radial-gradient(circle at 10% 20%,rgba(124,92,255,.35),transparent 40%),
+ linear-gradient(135deg,#111c3b,#10102b);
+}
+
+.game-promo h2{
+ font-size:clamp(25px,5vw,38px);
+ margin:0 0 10px;
+}
+
+.game-promo p{
+ color:#c2cce8;
+ line-height:2;
+ max-width:650px;
+ margin:10px auto 22px;
+}
+
+.game-icon{
+ font-size:65px;
+ margin-bottom:10px;
+}
+
+footer{
+ text-align:center;
+ color:var(--muted);
+ padding:35px 10px;
+ font-size:13px;
+}
+
+/* GAME */
+
+.game-overlay{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:1000;
+ background:#070b19;
+ overflow-y:auto;
+}
+
+.game-overlay.show{display:block}
+
+.game-topbar{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+ padding:15px 4%;
+ background:#111a32;
+ border-bottom:1px solid rgba(255,255,255,.1);
+ flex-wrap:wrap;
+}
+
+.game-topbar h2{margin:0;font-size:20px}
+
+.game-stats{
+ display:flex;
+ gap:18px;
+ color:#d8e4ff;
+ font-size:14px;
+}
+
+.game-main{
+ width:min(900px,94%);
+ margin:20px auto;
+}
+
+.game-instructions{
+ text-align:center;
+ color:#bac7e7;
+ line-height:2;
+ font-size:13px;
+}
+
+.game-canvas-wrap{
+ position:relative;
+ width:100%;
+ border:2px solid #384d85;
+ border-radius:17px;
+ overflow:hidden;
+ box-shadow:0 0 35px rgba(0,217,255,.12);
+ background:#101a3c;
+}
+
+#gameCanvas{
+ display:block;
+ width:100%;
+ height:auto;
+}
+
+.game-controls{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:14px;
+ margin:18px 0;
+}
+
+.control-btn{
+ width:65px;
+ height:60px;
+ border:1px solid #52669d;
+ border-radius:15px;
+ color:white;
+ background:#202e55;
+ font-size:25px;
+ touch-action:none;
+ user-select:none;
+}
+
+.control-btn:active{background:#5364a5}
+
+.game-message{
+ text-align:center;
+ min-height:50px;
+ color:#ffe08a;
+ line-height:1.8;
+ padding:10px;
+}
+
+.question-box{
+ display:none;
+ background:#18264b;
+ border:1px solid #4b65a8;
+ border-radius:17px;
+ padding:20px;
+ text-align:center;
+ margin:15px 0;
+}
+
+.question-box.show{display:block}
+
+.question-options{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:10px;
+ margin-top:15px;
+}
+
+.question-options button{
+ background:#293c70;
+ color:white;
+ border:1px solid #536ca8;
+ border-radius:12px;
+ padding:13px;
+ font-size:17px;
+}
+
+.question-options button:hover{background:#425b9c}
+
+.game-over{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:1100;
+ background:rgba(3,7,20,.94);
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+
+.game-over.show{display:flex}
+
+.game-over-card{
+ width:min(420px,100%);
+ padding:30px;
+ border-radius:22px;
+ text-align:center;
+ background:#172343;
+ border:1px solid #536ca8;
+}
+
 @media(max-width:600px){
- header{padding:10px 12px;flex-wrap:wrap}
- .nav-links{order:3;width:100%;justify-content:center}
- .nav-links a{flex:1;text-align:center}
- .creator{display:none}
- .container{padding:20px 11px}
- .main-panel,.theme-panel,.learning-section{padding:15px}
- .options-grid,.results-grid,.lesson-grid{grid-template-columns:1fr}
- .result-card.full{grid-column:auto}
- .theme-grid{max-height:330px}
- .logo{font-size:16px}
+ header{justify-content:center;text-align:center}
+ .section{padding:18px}
+ .game-stats{width:100%;justify-content:center}
+ .control-btn{width:58px;height:55px}
 }
 </style>
 </head>
 
 <body>
+<div class="background-glow"></div>
+
 <header>
- <div class="creator">سازنده: امیرعباس محمدی</div>
- <nav class="nav-links">
-  <a href="#analyzer">محاسبه‌گر</a>
-  <a href="#learning">آموزش عملیات</a>
- </nav>
- <div class="logo">
-  <div class="logo-icon">N</div>
-  <div>NOVA <span>MATH PRO</span></div>
- </div>
+ <div class="logo">NOVA <span>MATH PRO</span></div>
+ <div class="creator">ساخته شده توسط امیرعباس محمدی</div>
 </header>
 
 <main class="container">
+
  <section class="hero">
-  <div class="hero-icon">🧠</div>
-  <h1>NOVA <span>MATH PRO</span></h1>
-  <p>سیستم هوشمند تحلیل و بررسی ویژگی‌های ریاضی اعداد<br>قدرت ریاضی را با یک کلیک تجربه کنید.</p>
+  <h1>به دنیای <span>ریاضیات</span> خوش آمدی!</h1>
+  <p>
+   اینجا ریاضی فقط محاسبه نیست؛ یک ماجراجویی هیجان‌انگیز است.
+   عددها را تحلیل کن، چیزهای جدید یاد بگیر و وارد دنیای بازی‌های ریاضی شو!
+  </p>
  </section>
 
- <div class="workspace" id="analyzer">
-  <aside class="theme-panel">
-   <div class="panel-heading">
-    <h3>انتخاب تم گرافیکی</h3>
-    <div class="icon">🎨</div>
-   </div>
-   <p class="panel-description">ظاهر موردعلاقه خود را انتخاب کنید.</p>
-   <div class="theme-grid" id="themes"></div>
-   <div class="theme-footer">۳۰ تم تصویری اختصاصی برای NOVA MATH</div>
-  </aside>
+ <section class="section">
+  <h2 class="section-title">🔢 تحلیلگر <span>هوشمند اعداد</span></h2>
 
-  <section class="main-panel">
-   <h2 class="section-title"><span class="icon">🔢</span>تحلیل‌گر هوشمند اعداد</h2>
-   <p class="description">یک عدد صحیح وارد کنید و محاسبات موردنظر خود را انتخاب کنید.</p>
-   <label class="field-label" for="numberInput">عدد موردنظر شما</label>
-   <input type="number" id="numberInput" class="number-input" step="1" placeholder="مثلاً عدد 24 را وارد کنید...">
-   <div class="hint">محدوده مجاز: اعداد صحیح مثبت و منفی</div>
-
-   <div class="options-heading">
-    <h3>انتخاب عملیات ریاضی</h3>
-    <button class="text-btn" id="selectAll">انتخاب همه</button>
-   </div>
-
-   <div class="options-grid" id="options">
-    <label class="option"><span>تشخیص عدد اول یا مرکب</span><input type="checkbox" value="prime"></label>
-    <label class="option"><span>تشخیص زوج یا فرد</span><input type="checkbox" value="even"></label>
-    <label class="option"><span>شمارنده‌های مثبت</span><input type="checkbox" value="divisors"></label>
-    <label class="option"><span>توان دوم عدد</span><input type="checkbox" value="square"></label>
-    <label class="option"><span>جذر تقریبی</span><input type="checkbox" value="sqrt"></label>
-    <label class="option"><span>مجموع رقم‌ها</span><input type="checkbox" value="digits"></label>
-    <label class="option"><span>تشخیص علامت عدد</span><input type="checkbox" value="sign"></label>
-    <label class="option"><span>ده مضرب اول</span><input type="checkbox" value="multiples"></label>
-    <label class="option"><span>بررسی بخش‌پذیری</span><input type="checkbox" value="divisibility"></label>
-    <label class="option"><span>تشخیص مربع کامل</span><input type="checkbox" value="perfect"></label>
-   </div>
-
-   <div class="actions">
-    <button class="btn primary" id="calculate">✨ محاسبه کن</button>
-    <button class="btn" id="clearSelection">پاک کردن انتخاب‌ها</button>
-    <button class="btn" id="clearResults">پاک کردن نتایج</button>
-   </div>
-   <div class="error" id="error" role="status"></div>
-
-   <section class="results" id="results">
-    <div class="results-header">
-     <h2>📊 نتایج تحلیل عدد</h2>
-     <button class="btn" id="copyResults">کپی نتایج</button>
-    </div>
-    <div class="result-number"><span>عدد بررسی‌شده:</span><strong id="analyzedNumber">0</strong></div>
-    <div class="results-grid" id="resultsGrid"></div>
-   </section>
-  </section>
- </div>
-
- <!-- بخش جدید آموزش -->
- <section class="learning-section" id="learning">
-  <div class="learning-intro">
-   <div class="book-icon">📚</div>
-   <h2>آموزش و روش محاسبه عملیات ریاضی</h2>
-   <p>در این قسمت با هر ۱۰ عملیات سایت آشنا می‌شوید. برای هرکدام، روش حل در ریاضی، یک مثال ساده و توضیح کوتاهی از کاری که برنامه انجام می‌دهد نوشته شده است. روی عنوان هر درس بزنید تا توضیحات آن باز شود.</p>
+  <div class="input-row">
+   <input id="numberInput" type="number" placeholder="یک عدد وارد کن..." step="1">
+   <button class="btn" onclick="analyzeNumber()">تحلیل عدد</button>
   </div>
 
-  <div class="lesson-grid">
-
-   <details class="lesson">
-    <summary><span><span class="lesson-number">۱</span>تشخیص عدد اول یا مرکب</span></summary>
-    <div class="lesson-content">
-     <h4>در ریاضی و دنیای واقعی</h4>
-     <p>برای تشخیص عدد اول، بررسی می‌کنیم که عدد فقط بر ۱ و خودش بخش‌پذیر باشد. اگر به عددهای دیگری هم بدون باقی‌مانده تقسیم شود، مرکب است. عدد ۱ نه اول است و نه مرکب.</p>
-     <div class="example">۷ عدد اول است؛ ۱۲ عدد مرکب است.</div>
-     <h4>پایتون در سایت چه کار می‌کند؟</h4>
-     <p>برنامه چند عدد را برای تقسیم امتحان می‌کند. اگر یکی از آن‌ها عدد را بدون باقی‌مانده تقسیم کند، عدد مرکب است؛ اگر هیچ‌کدام نتوانند، عدد اول است.</p>
-     <div class="python-note">یعنی پایتون همان روش تقسیم و بررسی شمارنده‌ها را با سرعت زیاد انجام می‌دهد.</div>
-    </div>
-   </details>
-
-   <details class="lesson">
-    <summary><span><span class="lesson-number">۲</span>تشخیص زوج یا فرد</span></summary>
-    <div class="lesson-content">
-     <h4>در ریاضی و دنیای واقعی</h4>
-     <p>اگر بتوانیم یک تعداد وسیله را دوتادوتا و بدون باقی ماندن وسیله‌ای جفت کنیم، تعداد آن‌ها زوج است. اگر یکی باقی بماند، تعداد فرد است.</p>
-     <div class="example">۸ ÷ ۲ = ۴، پس ۸ زوج است. ۹ فرد است.</div>
-     <h4>پایتون در سایت چه کار می‌کند؟</h4>
-     <p>برنامه عدد را بر ۲ تقسیم می‌کند و باقی‌مانده را می‌سنجد. باقی‌مانده صفر یعنی زوج و باقی‌مانده یک یعنی فرد.</p>
-    </div>
-   </details>
-
-   <details class="lesson">
-    <summary><span><span class="lesson-number">۳</span>پیدا کردن شمارنده‌های مثبت</span></summary>
-    <div class="lesson-content">
-     <h4>در ریاضی و دنیای واقعی</h4>
-     <p>شمارنده‌های یک عدد، عددهایی هستند که آن عدد بر آن‌ها بدون باقی‌مانده تقسیم می‌شود. برای نمونه، می‌توان ۱۲ وسیله را به گروه‌هایی با اندازه ۱، ۲، ۳، ۴، ۶ یا ۱۲ تقسیم کرد.</p>
-     <div class="example">شمارنده‌های ۱۲: ۱، ۲، ۳، ۴، ۶ و ۱۲</div>
-     <h4>پایتون در سایت چه کار می‌کند؟</h4>
-     <p>برنامه عددهای مثبت را یکی‌یکی امتحان می‌کند و هر عددی را که تقسیم را بدون باقی‌مانده انجام دهد، در فهرست می‌گذارد.</p>
-    </div>
-   </details>
-
-   <details class="lesson">
-    <summary><span><span class="lesson-number">۴</span>محاسبه توان دوم</span></summary>
-    <div class="lesson-content">
-     <h4>در ریاضی و دنیای واقعی</h4>
-     <p>توان دوم یعنی یک عدد را در خودش ضرب کنیم. این مفهوم در محاسبه مساحت مربع هم دیده می‌شود؛ چون مساحت مربع از ضرب طول یک ضلع در خودش به دست می‌آید.</p>
-     <div class="example">۵² = ۵ × ۵ = ۲۵</div>
-     <h4>پایتون در سایت چه کار می‌کند؟</h4>
-     <p>برنامه عدد واردشده را در خودش ضرب می‌کند و حاصل را نمایش می‌دهد.</p>
-    </div>
-   </details>
-
-   <details class="lesson">
-    <summary><span><span class="lesson-number">۵</span>محاسبه جذر تقریبی</span></summary>
-    <div class="lesson-content">
-     <h4>در ریاضی و دنیای واقعی</h4>
-     <p>جذر یک عدد یعنی پیدا کردن عددی که اگر در خودش ضرب شود، عدد اصلی به دست بیاید. مثلاً جذر ۳۶ برابر ۶ است. بعضی عددها مثل ۱۰ جذر صحیح و ساده ندارند و جواب آن‌ها تقریبی است.</p>
-     <div class="example">√۳۶ = ۶ و √۱۰ ≈ ۳٫۱۶</div>
-     <h4>پایتون در سایت چه کار می‌کند؟</h4>
-     <p>برنامه از قابلیت ریاضی جاوااسکریپت برای محاسبه جذر استفاده می‌کند و جواب را نمایش می‌دهد. برای عدد منفی، جذر در مجموعه اعداد حقیقی تعریف نشده است.</p>
-    </div>
-   </details>
-
-   <details class="lesson">
-    <summary><span><span class="lesson-number">۶</span>محاسبه مجموع رقم‌ها</span></summary>
-    <div class="lesson-content">
-     <h4>در ریاضی و دنیای واقعی</h4>
-     <p>رقم‌های یک عدد را از هم جدا می‌کنیم و با هم جمع می‌زنیم. این کار برای تمرین جمع ذهنی و بعضی روش‌های بررسی عددها کاربرد دارد.</p>
-     <div class="example">۲۵۸ ← ۲ + ۵ + ۸ = ۱۵</div>
-     <h4>پایتون در سایت چه کار می‌کند؟</h4>
-     <p>برنامه رقم‌های عدد را جداگانه می‌خواند، آن‌ها را به عدد تبدیل می‌کند و همه را با هم جمع می‌زند. علامت منفی در این جمع حساب نمی‌شود.</p>
-    </div>
-   </details>
-
-   <details class="lesson">
-    <summary><span><span class="lesson-number">۷</span>تشخیص علامت عدد</span></summary>
-    <div class="lesson-content">
-     <h4>در ریاضی و دنیای واقعی</h4>
-     <p>عددهای بزرگ‌تر از صفر مثبت‌اند، عددهای کوچک‌تر از صفر منفی‌اند و خود صفر نه مثبت است و نه منفی. برای مثال، دمای ۵ درجه بالای صفر مثبت و ۵ درجه زیر صفر منفی است.</p>
-     <div class="example">۵ مثبت است؛ ۵- منفی است؛ ۰ صفر است.</div>
-     <h4>پایتون در سایت چه کار می‌کند؟</h4>
-     <p>برنامه عدد را با صفر مقایسه می‌کند و مشخص می‌کند که مثبت، منفی یا برابر صفر است.</p>
-    </div>
-   </details>
-
-   <details class="lesson">
-    <summary><span><span class="lesson-number">۸</span>پیدا کردن ده مضرب اول</span></summary>
-    <div class="lesson-content">
-     <h4>در ریاضی و دنیای واقعی</h4>
-     <p>مضرب‌های یک عدد با ضرب آن در عددهای طبیعی به دست می‌آیند. مثلاً وقتی بسته‌های ۳تایی داریم، تعداد کل می‌تواند ۳، ۶، ۹ و ... باشد.</p>
-     <div class="example">ده مضرب اول ۳: ۳، ۶، ۹، ۱۲، ۱۵، ۱۸، ۲۱، ۲۴، ۲۷، ۳۰</div>
-     <h4>پایتون در سایت چه کار می‌کند؟</h4>
-     <p>برنامه عدد واردشده را به ترتیب در ۱ تا ۱۰ ضرب می‌کند و نتیجه‌ها را پشت سر هم نشان می‌دهد.</p>
-    </div>
-   </details>
-
-   <details class="lesson">
-    <summary><span><span class="lesson-number">۹</span>بررسی بخش‌پذیری</span></summary>
-    <div class="lesson-content">
-     <h4>در ریاضی و دنیای واقعی</h4>
-     <p>وقتی یک عدد بر عدد دیگر تقسیم شود و باقی‌مانده نداشته باشد، می‌گوییم بخش‌پذیر است. مثلاً ۲۴ را می‌توان بدون باقی‌مانده بین ۶ گروه تقسیم کرد.</p>
-     <div class="example">۲۴ ÷ ۶ = ۴، پس ۲۴ بر ۶ بخش‌پذیر است.</div>
-     <h4>پایتون در سایت چه کار می‌کند؟</h4>
-     <p>برنامه باقی‌مانده تقسیم عدد را بر عددهای ۲ تا ۱۰ بررسی می‌کند و نتیجه هرکدام را جداگانه نشان می‌دهد.</p>
-    </div>
-   </details>
-
-   <details class="lesson">
-    <summary><span><span class="lesson-number">۱۰</span>تشخیص مربع کامل</span></summary>
-    <div class="lesson-content">
-     <h4>در ریاضی و دنیای واقعی</h4>
-     <p>مربع کامل عددی است که از ضرب یک عدد صحیح در خودش به دست بیاید. مثلاً می‌توان ۴۹ نقطه را به شکل مربعی با ۷ ردیف و ۷ ستون چید.</p>
-     <div class="example">۴۹ = ۷ × ۷، پس ۴۹ مربع کامل است.</div>
-     <h4>پایتون در سایت چه کار می‌کند؟</h4>
-     <p>برنامه جذر عدد را به دست می‌آورد و بررسی می‌کند که آیا جواب یک عدد صحیح است یا نه. اگر چنین باشد، عدد مربع کامل است.</p>
-    </div>
-   </details>
-
+  <div id="analysisStatus" class="status">
+   یک عدد وارد کن تا اطلاعات جالبی درباره آن ببینی.
   </div>
 
-  <div class="learning-tip">
-   <strong> </strong>
-   
+  <div id="results" class="results"></div>
+ </section>
+
+ <section class="section">
+  <h2 class="section-title">📚 یادگیری <span>ریاضی</span></h2>
+
+  <div class="learning-grid">
+   <article class="learning-card">
+    <h3>اعداد اول</h3>
+    عدد اول عددی بزرگ‌تر از یک است که فقط بر یک و خودش بخش‌پذیر باشد.
+    <br>مثال: ۲، ۳، ۵، ۷ و ۱۱
+   </article>
+
+   <article class="learning-card">
+    <h3>اعداد زوج و فرد</h3>
+    عدد زوج بر ۲ بخش‌پذیر است و باقی‌مانده ندارد.
+    <br>مثال زوج: ۲، ۴، ۶
+    <br>مثال فرد: ۱، ۳، ۵
+   </article>
+
+   <article class="learning-card">
+    <h3>توان دوم</h3>
+    وقتی یک عدد را در خودش ضرب کنیم، توان دوم آن را به دست می‌آوریم.
+    <br>مثال: ۵ × ۵ = ۲۵
+   </article>
+
+   <article class="learning-card">
+    <h3>جذر</h3>
+    جذر یک عدد، عددی است که اگر در خودش ضرب شود، عدد اصلی به دست می‌آید.
+    <br>مثال: جذر ۲۵ برابر ۵ است.
+   </article>
+
+   <article class="learning-card">
+    <h3>مضرب‌ها</h3>
+    مضرب‌های یک عدد با ضرب آن عدد در اعداد صحیح مثبت ساخته می‌شوند.
+    <br>مثال: مضرب‌های ۳ عبارت‌اند از ۳، ۶، ۹ و ۱۲.
+   </article>
+
+   <article class="learning-card">
+    <h3>مقسوم‌علیه</h3>
+    عددی که بتواند یک عدد دیگر را بدون باقی‌مانده تقسیم کند.
+    <br>مثال: مقسوم‌علیه‌های ۱۲ شامل ۱، ۲، ۳، ۴، ۶ و ۱۲ هستند.
+   </article>
   </div>
  </section>
+
+ <section class="section">
+  <h2 class="section-title">🎨 گالری <span>تم‌های NOVA</span></h2>
+  <p style="color:var(--muted)">ظاهر مورد علاقه‌ات را انتخاب کن.</p>
+  <div class="theme-grid" id="themeGrid"></div>
+ </section>
+
+ <section class="section">
+  <div class="game-promo">
+   <div class="game-icon">🚀🧩</div>
+   <h2>بیداری فرمول</h2>
+   <p>
+    آماده‌ای وارد یک ماجراجویی ریاضی شوی؟
+    از سکوها بپر، ستاره‌های ریاضی را جمع کن،
+    از موانع عبور کن و با حل سؤال‌ها دروازه‌های مراحل بعدی را باز کن!
+   </p>
+   <button class="btn gold" onclick="openGame()">🎮 شروع ماجراجویی</button>
+  </div>
+ </section>
+
 </main>
 
 <footer>
- طراحی و توسعه اختصاصی توسط <strong>امیرعباس محمدی</strong><br>
- NOVA MATH PRO © 2026<br>
- SMART NUMBER ANALYZER
+ NOVA MATH PRO © 2026
+ <br>
+ طراحی و توسعه توسط امیرعباس محمدی
 </footer>
 
+<!-- GAME -->
+<div class="game-overlay" id="gameOverlay">
+
+ <div class="game-topbar">
+  <h2>🚀 بیداری فرمول</h2>
+  <div class="game-stats">
+   <span>⭐ امتیاز: <b id="score">۰</b></span>
+   <span>🌟 ستاره‌ها: <b id="stars">۰</b></span>
+   <span>🗺️ مرحله: <b id="level">۱</b></span>
+  </div>
+  <button class="btn" onclick="closeGame()">خروج ✕</button>
+ </div>
+
+ <div class="game-main">
+  <p class="game-instructions">
+   حرکت: کلیدهای جهت‌دار یا A و D
+   | پرش: Space یا فلش بالا
+   <br>
+   در موبایل از دکمه‌های پایین صفحه استفاده کن.
+  </p>
+
+  <div class="game-canvas-wrap">
+   <canvas id="gameCanvas" width="850" height="420"></canvas>
+  </div>
+
+  <div class="game-controls">
+   <button class="control-btn" id="leftBtn">◀</button>
+   <button class="control-btn" id="jumpBtn">⬆</button>
+   <button class="control-btn" id="rightBtn">▶</button>
+  </div>
+
+  <div class="game-message" id="gameMessage">
+   ستاره‌های درخشان را جمع کن و به دروازه برس!
+  </div>
+
+  <div class="question-box" id="questionBox">
+   <h3>🧠 دروازه ریاضی!</h3>
+   <p id="questionText"></p>
+   <div class="question-options" id="questionOptions"></div>
+  </div>
+ </div>
+</div>
+
+<div class="game-over" id="gameOver">
+ <div class="game-over-card">
+  <h2 id="overTitle">🏆 آفرین!</h2>
+  <p id="overText">ماجراجویی تمام شد.</p>
+  <button class="btn gold" onclick="restartGame()">دوباره بازی کن</button>
+  <button class="btn" onclick="closeGame()" style="margin-top:10px">بازگشت به سایت</button>
+ </div>
+</div>
+
 <script>
-const themes=[
-["مینیمال","#17191e","#252932","#333945","#d1d5db","#94a3b8","◈"],
-["قرمز","#240c12","#40151f","#581d2b","#ef4444","#fb7185","🔥"],
-["زمرد","#05231e","#0b3b31","#125344","#34d399","#2dd4bf","💎"],
-["آسمانی","#101a35","#1b2c50","#273b65","#60a5fa","#818cf8","☁️"],
-["صورتی","#250e24","#42183e","#5b2254","#e879f9","#f0abfc","🌸"],
-["شکلاتی","#21140e","#39251b","#513629","#d6a06d","#f0b98a","🍫"],
-["روشن","#edf2f7","#ffffff","#e2e8f0","#4f46e5","#0891b2","☀️"],
-["سایبر","#050b14","#101e2d","#173247","#00ff9c","#00d9ff","⚡"],
-["لاجوردی","#0b1230","#18234b","#243365","#818cf8","#38bdf8","🔷"],
-["خاکستری","#17191e","#252932","#333945","#94a3b8","#64748b","🏙️"],
-["کهکشانی","#10091e","#21133b","#30204e","#a78bfa","#e879f9","🌌"],
-["آتش","#200b08","#3d1710","#562319","#fb923c","#ef4444","🔥"],
-["اقیانوس","#071b2c","#0c3047","#12415a","#00b4d8","#48cae4","🌊"],
-["طلایی","#21190b","#392b12","#4d3918","#fbbf24","#f59e0b","👑"],
-["جنگل","#071c16","#103126","#194335","#10b981","#34d399","🌲"],
-["یخی","#101d2c","#1b3045","#29445c","#38bdf8","#67e8f9","❄️"],
-["رز","#260d1d","#40162f","#55203e","#f472b6","#fb7185","🌹"],
-["نئون","#080d1b","#111a2e","#19243c","#8b5cf6","#06b6d4","💡"],
-["مسی","#21130f","#39221b","#503027","#fb923c","#fdba74","🪙"],
-["آرکید","#17082a","#291044","#40165e","#f0abfc","#c084fc","👾"],
-["زمستان","#0b1725","#172a40","#203c57","#93c5fd","#e0f2fe","🏔️"],
-["یاقوتی","#220b16","#3c1425","#541b34","#fb7185","#fda4af","💠"],
-["طلوع","#27120b","#452117","#60301d","#fbbf24","#fb923c","🌅"],
-["آبی سلطنتی","#0a1534","#142750","#1e3970","#6366f1","#38bdf8","🏰"],
-["سبز نعنایی","#10231f","#183a32","#245247","#6ee7b7","#a7f3d0","🍃"],
-["کربنی","#101216","#20242a","#30363f","#d1d5db","#9ca3af","⚙️"],
-["نئون سبز","#07140e","#10271b","#183c29","#4ade80","#a3e635","🧪"],
-["آسمان شب","#090d22","#151b3c","#222b53","#818cf8","#38bdf8","🌙"],
-["نارنجی","#25140a","#3e2411","#57351b","#fb923c","#fbbf24","🍊"],
-["چندجهانی","#100b20","#211638","#30204c","#f472b6","#22d3ee","🪐"]
-].map(t=>({name:t[0],bg:t[1],panel:t[2],panel2:t[3],accent:t[4],accent2:t[5],art:t[6]}));
+/* NUMBER ANALYZER */
 
-function makeArtwork(t){
- const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
- <defs>
- <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
- <stop offset="0%" stop-color="${t.accent}"/>
- <stop offset="100%" stop-color="${t.accent2}"/>
- </linearGradient>
- <radialGradient id="r">
- <stop offset="0%" stop-color="#ffffff" stop-opacity=".32"/>
- <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
- </radialGradient>
- </defs>
- <rect width="100" height="100" rx="15" fill="${t.panel2}"/>
- <circle cx="80" cy="17" r="38" fill="url(#r)"/>
- <circle cx="16" cy="86" r="35" fill="${t.accent}" opacity=".13"/>
- <path d="M0 75 Q25 45 50 70 T100 58 V100 H0Z" fill="url(#g)" opacity=".25"/>
- <circle cx="50" cy="47" r="28" fill="url(#g)" opacity=".22"/>
- <circle cx="50" cy="47" r="22" fill="none" stroke="url(#g)" stroke-width="2" opacity=".8"/>
- <text x="50" y="61" text-anchor="middle" font-size="40" font-family="Arial">${t.art}</text>
- <circle cx="14" cy="16" r="3" fill="${t.accent}"/>
- <circle cx="86" cy="80" r="3" fill="${t.accent2}"/>
- </svg>`;
- return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
-}
+function analyzeNumber(){
+ const input=document.getElementById('numberInput');
+ const status=document.getElementById('analysisStatus');
+ const results=document.getElementById('results');
+ const n=Number(input.value);
 
-function createThemes(){
- const box=document.getElementById("themes");
- themes.forEach((t,i)=>{
-  const btn=document.createElement("button");
-  btn.className="theme-option";btn.type="button";
-  btn.setAttribute("aria-label","انتخاب تم "+t.name);
-  const info=document.createElement("span");info.className="theme-info";
-  const name=document.createElement("span");name.className="theme-name";name.textContent=t.name;
-  const art=document.createElement("span");art.className="theme-art";
-  const img=document.createElement("img");img.src=makeArtwork(t);
-  img.alt="تصویر تم "+t.name;img.width=53;img.height=53;
-  art.appendChild(img);info.append(name);btn.append(info,art);
-  btn.addEventListener("click",()=>applyTheme(i));
-  box.appendChild(btn);
- });
-}
+ results.innerHTML='';
 
-function applyTheme(i){
- const t=themes[i];if(!t)return;
- const root=document.documentElement;
- root.style.setProperty("--bg",t.bg);
- root.style.setProperty("--panel",t.panel);
- root.style.setProperty("--panel2",t.panel2);
- root.style.setProperty("--accent",t.accent);
- root.style.setProperty("--accent2",t.accent2);
- document.querySelectorAll(".theme-option").forEach((btn,j)=>btn.classList.toggle("active",i===j));
- try{localStorage.setItem("nova-theme",String(i))}catch(e){}
-}
-
-createThemes();
-let savedTheme=0;
-try{
- const saved=localStorage.getItem("nova-theme");
- if(saved!==null){
-  const index=Number(saved);
-  if(Number.isInteger(index)&&index>=0&&index<themes.length)savedTheme=index;
+ if(input.value.trim()==='' || !Number.isSafeInteger(n)){
+  status.textContent='لطفاً یک عدد صحیح معتبر وارد کن.';
+  return;
  }
-}catch(e){}
-applyTheme(savedTheme);
 
-const $=id=>document.getElementById(id);
+ if(Math.abs(n)>1000000000){
+  status.textContent='برای تحلیل دقیق، عددی بین منفی یک میلیارد و مثبت یک میلیارد وارد کن.';
+  return;
+ }
 
-function updateOptions(){
- document.querySelectorAll(".option").forEach(label=>{
-  label.classList.toggle("selected",label.querySelector("input").checked);
+ const abs=Math.abs(n);
+ const isPrime=checkPrime(abs);
+ const divisors=[];
+
+ if(abs>0){
+  for(let i=1;i<=Math.sqrt(abs);i++){
+   if(abs%i===0){
+    divisors.push(i);
+    if(i!==abs/i)divisors.push(abs/i);
+   }
+  }
+  divisors.sort((a,b)=>a-b);
+ }
+
+ const digitSum=String(abs).split('').reduce((a,b)=>a+Number(b),0);
+ const square=n*n;
+ const root=n>=0?Math.sqrt(n):null;
+ const multiples=Array.from({length:10},(_,i)=>n*(i+1));
+
+ const data=[
+  ['نوع عدد',n<0?'منفی':n===0?'صفر':'مثبت'],
+  ['زوج یا فرد',n%2===0?'زوج':'فرد'],
+  ['اول یا مرکب',abs===0?'نه اول و نه مرکب':abs===1?'نه اول و نه مرکب':isPrime?'اول':'مرکب'],
+  ['مجموع رقم‌ها',digitSum],
+  ['توان دوم',square],
+  ['جذر',root===null?'در اعداد حقیقی تعریف نشده':root],
+  ['تعداد مقسوم‌علیه‌ها',divisors.length],
+  ['مقسوم‌علیه‌ها',divisors.join(' ، ')||'تعریف نشده'],
+  ['مضرب‌های اول',multiples.join(' ، ')],
+  ['بخش‌پذیری بر ۳',n%3===0?'بله':'خیر'],
+  ['بخش‌پذیری بر ۵',n%5===0?'بله':'خیر'],
+  ['مربع کامل',Number.isInteger(Math.sqrt(abs))?'بله':'خیر']
+ ];
+
+ data.forEach(([label,value])=>{
+  const card=document.createElement('div');
+  card.className='result-card';
+
+  const small=document.createElement('small');
+  small.textContent=label;
+
+  const strong=document.createElement('strong');
+  strong.textContent=value;
+
+  card.append(small,strong);
+  results.appendChild(card);
  });
+
+ status.textContent='تحلیل عدد '+n+' با موفقیت انجام شد! ✨';
 }
-document.querySelectorAll(".option input").forEach(input=>input.addEventListener("change",updateOptions));
 
-$("selectAll").addEventListener("click",()=>{
- document.querySelectorAll(".option input").forEach(input=>input.checked=true);
- updateOptions();
-});
-$("clearSelection").addEventListener("click",()=>{
- document.querySelectorAll(".option input").forEach(input=>input.checked=false);
- updateOptions();
-});
-
-function isPrime(n){
+function checkPrime(n){
  if(n<2)return false;
  if(n===2)return true;
  if(n%2===0)return false;
- for(let i=3;i<=Math.sqrt(n);i+=2){if(n%i===0)return false}
+
+ for(let i=3;i<=Math.sqrt(n);i+=2){
+  if(n%i===0)return false;
+ }
  return true;
 }
 
-function getDivisors(n){
- const value=Math.abs(n),small=[],large=[];
- for(let i=1;i<=Math.sqrt(value);i++){
-  if(value%i===0){
-   small.push(i);
-   if(i!==value/i)large.push(value/i);
-  }
+document.getElementById('numberInput').addEventListener('keydown',e=>{
+ if(e.key==='Enter')analyzeNumber();
+});
+
+
+/* THEMES */
+
+const themes=[
+ {name:'نیمه‌شب',bg:'#080d1d',panel:'#111a32',primary:'#7c5cff',secondary:'#00d9ff'},
+ {name:'اقیانوس',bg:'#061b2b',panel:'#10344a',primary:'#087ea4',secondary:'#35e0ff'},
+ {name:'جنگل',bg:'#071c16',panel:'#123328',primary:'#159b65',secondary:'#8affbd'},
+ {name:'غروب',bg:'#241020',panel:'#3b1b35',primary:'#dc4c83',secondary:'#ffbd69'},
+ {name:'یخی',bg:'#101c2c',panel:'#1d344b',primary:'#4c9dd5',secondary:'#a7edff'},
+ {name:'طلایی',bg:'#21190b',panel:'#382b13',primary:'#c58b24',secondary:'#ffe18a'},
+ {name:'بنفش',bg:'#180c2c',panel:'#291748',primary:'#9957e8',secondary:'#d4a7ff'},
+ {name:'قرمز',bg:'#260c12',panel:'#421722',primary:'#d83c54',secondary:'#ff9c9c'},
+ {name:'مینیمال',bg:'#171717',panel:'#262626',primary:'#777777',secondary:'#dedede'},
+ {name:'کهکشانی',bg:'#09091f',panel:'#191943',primary:'#744cff',secondary:'#ff76e5'},
+ {name:'سبز نئونی',bg:'#07130d',panel:'#10271a',primary:'#26a84c',secondary:'#b2ff48'},
+ {name:'آسمانی',bg:'#091b36',panel:'#142c50',primary:'#397ce8',secondary:'#80d6ff'},
+ {name:'شکلاتی',bg:'#21150f',panel:'#38271c',primary:'#a76a3d',secondary:'#efbd86'},
+ {name:'صورتی',bg:'#260e20',panel:'#421c39',primary:'#d64a9a',secondary:'#ffb8e4'},
+ {name:'فیروزه‌ای',bg:'#08201e',panel:'#123b38',primary:'#00a99d',secondary:'#80fff0'},
+ {name:'آتش',bg:'#210e08',panel:'#401b10',primary:'#e65c1d',secondary:'#ffce65'},
+ {name:'مهتاب',bg:'#111522',panel:'#252b40',primary:'#7788b9',secondary:'#e0e8ff'},
+ {name:'آرکید',bg:'#150b26',panel:'#281444',primary:'#ff3bca',secondary:'#45f5ff'},
+ {name:'قطبی',bg:'#081d28',panel:'#153846',primary:'#299db8',secondary:'#c2f5ff'},
+ {name:'زمرد',bg:'#071d19',panel:'#103c30',primary:'#009b72',secondary:'#7bffcf'},
+ {name:'یاقوت',bg:'#210a18',panel:'#3b142b',primary:'#c12e65',secondary:'#ff9ab8'},
+ {name:'نارنجی',bg:'#241308',panel:'#40240f',primary:'#dc7621',secondary:'#ffd18b'},
+ {name:'آبی سلطنتی',bg:'#0b1230',panel:'#17234d',primary:'#4059c7',secondary:'#9bb4ff'},
+ {name:'خاکستری',bg:'#15191d',panel:'#292f35',primary:'#64717d',secondary:'#c7d3dd'},
+ {name:'آزمایشگاه',bg:'#09191a',panel:'#123334',primary:'#00a9a9',secondary:'#8affee'},
+ {name:'شفق قطبی',bg:'#091527',panel:'#152c3e',primary:'#368eaa',secondary:'#b0ffda'},
+ {name:'کوانتوم',bg:'#100c27',panel:'#211b47',primary:'#7655d9',secondary:'#ff8bea'},
+ {name:'نئون',bg:'#080d18',panel:'#141e32',primary:'#00a8ff',secondary:'#f64cff'},
+ {name:'کلاسیک',bg:'#171b27',panel:'#292f40',primary:'#6579b8',secondary:'#f3d58a'},
+ {name:'ترکیبی',bg:'#101326',panel:'#222442',primary:'#9a53e8',secondary:'#00e4c7'}
+];
+
+const themeGrid=document.getElementById('themeGrid');
+
+themes.forEach((t,i)=>{
+ const button=document.createElement('button');
+ button.className='theme-option';
+ button.innerHTML=`
+  <div class="theme-preview" style="background:linear-gradient(120deg,${t.primary},${t.secondary})"></div>
+  ${t.name}
+ `;
+ button.addEventListener('click',()=>setTheme(i));
+ button.id='theme-'+i;
+ themeGrid.appendChild(button);
+});
+
+function setTheme(i){
+ const t=themes[i];
+ const root=document.documentElement;
+
+ root.style.setProperty('--bg',t.bg);
+ root.style.setProperty('--panel',t.panel);
+ root.style.setProperty('--panel2',t.panel+'dd');
+ root.style.setProperty('--primary',t.primary);
+ root.style.setProperty('--secondary',t.secondary);
+
+ document.querySelectorAll('.theme-option').forEach(b=>b.classList.remove('active'));
+ document.getElementById('theme-'+i).classList.add('active');
+
+ localStorage.setItem('nova-theme',i);
+}
+
+const savedTheme=Number(localStorage.getItem('nova-theme')||0);
+setTheme(Number.isInteger(savedTheme)&&savedTheme>=0&&savedTheme<themes.length?savedTheme:0);
+
+
+/* FORMULA AWAKENING GAME */
+
+const canvas=document.getElementById('gameCanvas');
+const ctx=canvas.getContext('2d');
+
+const W=850,H=420;
+
+let player;
+let platforms=[];
+let collectibles=[];
+let score=0;
+let stars=0;
+let level=1;
+let camera=0;
+let gameRunning=false;
+let animationId=null;
+let keys={};
+let questionActive=false;
+let gateX=0;
+let lastTime=0;
+
+const gravity=.58;
+const questions=[
+ {q:'۷ + ۸ چند می‌شود؟',a:['۱۳','۱۵','۱۶','۱۴'],correct:1},
+ {q:'۶ × ۴ چند می‌شود؟',a:['۲۴','۲۰','۲۸','۱۸'],correct:0},
+ {q:'جذر ۸۱ چند است؟',a:['۷','۸','۹','۱۰'],correct:2},
+ {q:'عدد ۲۱ بر کدام عدد بخش‌پذیر است؟',a:['۸','۵','۷','۱۰'],correct:2},
+ {q:'۱۲ × ۱۲ چند می‌شود؟',a:['۱۲۴','۱۴۴','۱۳۴','۱۵۴'],correct:1},
+ {q:'عدد بعدی در دنباله ۲، ۴، ۸، ۱۶ چیست؟',a:['۲۴','۲۸','۳۰','۳۲'],correct:3},
+ {q:'مجموع زاویه‌های مثلث چند درجه است؟',a:['۹۰','۱۸۰','۲۷۰','۳۶۰'],correct:1}
+];
+
+let currentQuestion=0;
+
+function openGame(){
+ document.getElementById('gameOverlay').classList.add('show');
+ document.body.style.overflow='hidden';
+ restartGame();
+}
+
+function closeGame(){
+ document.getElementById('gameOverlay').classList.remove('show');
+ document.getElementById('gameOver').classList.remove('show');
+ document.body.style.overflow='';
+ gameRunning=false;
+ if(animationId)cancelAnimationFrame(animationId);
+}
+
+function createLevel(){
+ player={
+  x:55,y:250,w:30,h:39,
+  vx:0,vy:0,
+  grounded:false,
+  color:'#ffe36b'
+ };
+
+ camera=0;
+
+ platforms=[
+  {x:0,y:355,w:250,h:65},
+  {x:300,y:305,w:150,h:30},
+  {x:500,y:260,w:150,h:30},
+  {x:700,y:320,w:170,h:35},
+  {x:920,y:270,w:140,h:30},
+  {x:1120,y:220,w:160,h:30},
+  {x:1360,y:300,w:170,h:35},
+  {x:1600,y:250,w:150,h:30},
+  {x:1820,y:355,w:250,h:65}
+ ];
+
+ collectibles=[
+  {x:150,y:310,taken:false},
+  {x:365,y:260,taken:false},
+  {x:555,y:215,taken:false},
+  {x:760,y:275,taken:false},
+  {x:970,y:225,taken:false},
+  {x:1180,y:175,taken:false},
+  {x:1430,y:255,taken:false},
+  {x:1660,y:205,taken:false}
+ ];
+
+ gateX=1950;
+}
+
+function restartGame(){
+ score=0;
+ stars=0;
+ level=1;
+ questionActive=false;
+
+ document.getElementById('gameOver').classList.remove('show');
+ document.getElementById('questionBox').classList.remove('show');
+
+ createLevel();
+ updateStats();
+
+ gameRunning=true;
+ lastTime=0;
+
+ if(animationId)cancelAnimationFrame(animationId);
+ animationId=requestAnimationFrame(gameLoop);
+
+ document.getElementById('gameMessage').textContent=
+ 'حرکت کن، بپر و ستاره‌های ریاضی را جمع کن!';
+}
+
+function updateStats(){
+ document.getElementById('score').textContent=score.toLocaleString('fa-IR');
+ document.getElementById('stars').textContent=stars.toLocaleString('fa-IR');
+ document.getElementById('level').textContent=level.toLocaleString('fa-IR');
+}
+
+function gameLoop(time){
+ if(!gameRunning)return;
+
+ const dt=lastTime?Math.min((time-lastTime)/16.67,2):1;
+ lastTime=time;
+
+ if(!questionActive){
+  updateGame(dt);
  }
- return [...small,...large.reverse()];
+
+ drawGame();
+
+ animationId=requestAnimationFrame(gameLoop);
 }
 
-function createCard(title,content,full=false){
- const card=document.createElement("article");
- card.className="result-card"+(full?" full":"");
- const heading=document.createElement("h4");heading.textContent=title;
- const paragraph=document.createElement("p");paragraph.innerHTML=content;
- card.append(heading,paragraph);
- $("resultsGrid").appendChild(card);
-}
+function updateGame(dt){
+ const speed=3.8;
 
-function createAnalysis(n,selected){
- const grid=$("resultsGrid");grid.innerHTML="";
- selected.forEach(type=>{
-  switch(type){
-   case "prime":
-    if(n<2)createCard("تشخیص عدد اول یا مرکب","این عدد نه اول است و نه مرکب.");
-    else if(isPrime(n))createCard("تشخیص عدد اول یا مرکب",`<span class="good">✓ عدد ${n} یک عدد اول است.</span>`);
-    else createCard("تشخیص عدد اول یا مرکب",`<span class="bad">عدد ${n} مرکب است.</span>`);
-    break;
-   case "even":
-    createCard("تشخیص زوج یا فرد",n%2===0?`<span class="good">عدد ${n} زوج است.</span>`:`<span class="good">عدد ${n} فرد است.</span>`);
-    break;
-   case "divisors":
-    if(n===0){createCard("شمارنده‌های مثبت","عدد صفر بی‌نهایت شمارنده مثبت دارد.");break}
-    const divisors=getDivisors(n);
-    const display=divisors.length>500?divisors.slice(0,500).join(" ، ")+" ... (نمایش محدود)":divisors.join(" ، ");
-    createCard("شمارنده‌های مثبت",`تعداد شمارنده‌ها: <b>${divisors.length}</b><br><br>${display}`,true);
-    break;
-   case "square":
-    createCard("توان دوم عدد",`<div class="big">${n*n}</div>`);
-    break;
-   case "sqrt":
-    if(n<0)createCard("جذر تقریبی","جذر حقیقی این عدد در مجموعه اعداد حقیقی تعریف نشده است.");
-    else createCard("جذر تقریبی",`<div class="big">${Math.sqrt(n).toPrecision(10)}</div>`);
-    break;
-   case "digits":
-    const digits=String(Math.abs(n)).split("").map(Number);
-    const sum=digits.reduce((a,b)=>a+b,0);
-    createCard("مجموع رقم‌ها",`رقم‌ها: ${digits.join(" + ")}<br><br><div class="big">${sum}</div>`);
-    break;
-   case "sign":
-    createCard("تشخیص علامت عدد",n>0?"عدد مثبت است.":n<0?"عدد منفی است.":"عدد صفر است.");
-    break;
-   case "multiples":
-    const multiples=Array.from({length:10},(_,i)=>n*(i+1));
-    createCard("ده مضرب اول",`<div class="ltr">${multiples.join(" ، ")}</div>`,true);
-    break;
-   case "divisibility":
-    const rows=[];
-    for(let i=2;i<=10;i++){
-     const divisible=n%i===0;
-     rows.push(`${i} : <span class="${divisible?"good":"bad"}">${divisible?"بخش‌پذیر است ✓":"بخش‌پذیر نیست ✕"}</span>`);
-    }
-    createCard("بررسی بخش‌پذیری",rows.join("<br>"));
-    break;
-   case "perfect":
-    if(n<0)createCard("تشخیص مربع کامل","عدد منفی مربع کامل نیست.");
-    else{
-     const r=Math.sqrt(n),perfect=Number.isInteger(r);
-     createCard("تشخیص مربع کامل",perfect?`<span class="good">✓ این عدد مربع کامل است.</span><br><br>${r} × ${r} = ${n}`:`<span class="bad">✕ این عدد مربع کامل نیست.</span>`);
-    }
-    break;
+ player.vx=0;
+
+ if(keys.left)player.vx=-speed;
+ if(keys.right)player.vx=speed;
+
+ player.x+=player.vx*dt;
+
+ if(keys.jump&&player.grounded){
+  player.vy=-12.5;
+  player.grounded=false;
+ }
+
+ keys.jump=false;
+
+ player.vy+=gravity*dt;
+ player.y+=player.vy*dt;
+
+ player.grounded=false;
+
+ platforms.forEach(p=>{
+  const oldBottom=player.y+player.h-player.vy*dt;
+  const newBottom=player.y+player.h;
+
+  if(
+   player.x+player.w>p.x &&
+   player.x<p.x+p.w &&
+   oldBottom<=p.y+5 &&
+   newBottom>=p.y &&
+   player.vy>=0
+  ){
+   player.y=p.y-player.h;
+   player.vy=0;
+   player.grounded=true;
   }
+ });
+
+ collectibles.forEach(c=>{
+  if(c.taken)return;
+
+  const dx=player.x+player.w/2-c.x;
+  const dy=player.y+player.h/2-c.y;
+
+  if(Math.hypot(dx,dy)<28){
+   c.taken=true;
+   stars++;
+   score+=10;
+   updateStats();
+   document.getElementById('gameMessage').textContent='⭐ یک ستاره جمع کردی! عالیه!';
+  }
+ });
+
+ if(player.y>H+100){
+  player.x=55;
+  player.y=250;
+  player.vy=0;
+  document.getElementById('gameMessage').textContent='دوباره تلاش کن! از سکوها با دقت بپر.';
+ }
+
+ if(player.x>gateX-40){
+  showQuestion();
+ }
+
+ camera=Math.max(0,Math.min(player.x-220,gateX-W+100));
+}
+
+function drawGame(){
+ ctx.clearRect(0,0,W,H);
+
+ const sky=ctx.createLinearGradient(0,0,0,H);
+ sky.addColorStop(0,'#101d48');
+ sky.addColorStop(1,'#283a69');
+ ctx.fillStyle=sky;
+ ctx.fillRect(0,0,W,H);
+
+ // Stars in the sky
+ for(let i=0;i<45;i++){
+  const x=((i*127-camera*.15)%W+W)%W;
+  const y=(i*67)%210;
+  ctx.fillStyle='rgba(255,255,255,.65)';
+  ctx.beginPath();
+  ctx.arc(x,y,1.5,0,Math.PI*2);
+  ctx.fill();
+ }
+
+ // Decorative planets
+ ctx.fillStyle='rgba(117,108,255,.2)';
+ ctx.beginPath();
+ ctx.arc(690-camera*.08,95,45,0,Math.PI*2);
+ ctx.fill();
+
+ ctx.save();
+ ctx.translate(-camera,0);
+
+ // Platforms
+ platforms.forEach(p=>{
+  const gradient=ctx.createLinearGradient(0,p.y,0,p.y+p.h);
+  gradient.addColorStop(0,'#53e4c1');
+  gradient.addColorStop(1,'#236b82');
+
+  ctx.fillStyle=gradient;
+  roundRect(ctx,p.x,p.y,p.w,p.h,8,true);
+
+  ctx.fillStyle='rgba(255,255,255,.25)';
+  ctx.fillRect(p.x+8,p.y+5,p.w-16,3);
+ });
+
+ // Collectibles
+ collectibles.forEach(c=>{
+  if(c.taken)return;
+
+  ctx.fillStyle='#ffdf5a';
+  ctx.beginPath();
+  ctx.arc(c.x,c.y,10,0,Math.PI*2);
+  ctx.fill();
+
+  ctx.fillStyle='#fff8bd';
+  ctx.beginPath();
+  ctx.arc(c.x-3,c.y-3,3,0,Math.PI*2);
+  ctx.fill();
+ });
+
+ // Gate
+ ctx.fillStyle='#8c62ff';
+ roundRect(ctx,gateX,260,48,95,9,true);
+ ctx.fillStyle='#d5c2ff';
+ ctx.font='bold 23px Arial';
+ ctx.textAlign='center';
+ ctx.fillText('?',gateX+24,315);
+
+ // Player
+ ctx.fillStyle='#ffe36b';
+ roundRect(ctx,player.x,player.y,player.w,player.h,9,true);
+
+ ctx.fillStyle='#28345b';
+ ctx.beginPath();
+ ctx.arc(player.x+10,player.y+14,3,0,Math.PI*2);
+ ctx.arc(player.x+22,player.y+14,3,0,Math.PI*2);
+ ctx.fill();
+
+ ctx.strokeStyle='#28345b';
+ ctx.lineWidth=2;
+ ctx.beginPath();
+ ctx.arc(player.x+16,player.y+22,5,0,Math.PI);
+ ctx.stroke();
+
+ // Player glow
+ ctx.strokeStyle='rgba(255,227,107,.4)';
+ ctx.lineWidth=3;
+ ctx.strokeRect(player.x-3,player.y-3,player.w+6,player.h+6);
+
+ ctx.restore();
+
+ // Ground label
+ ctx.fillStyle='rgba(255,255,255,.7)';
+ ctx.font='13px Vazirmatn';
+ ctx.textAlign='center';
+ ctx.fillText('دنیای بیداری فرمول',W/2,25);
+}
+
+function roundRect(c,x,y,w,h,r,fill){
+ c.beginPath();
+ c.roundRect(x,y,w,h,r);
+ if(fill)c.fill();
+ else c.stroke();
+}
+
+function showQuestion(){
+ questionActive=true;
+
+ currentQuestion=Math.min(level-1,questions.length-1);
+ const q=questions[currentQuestion];
+
+ document.getElementById('questionText').textContent=q.q;
+
+ const options=document.getElementById('questionOptions');
+ options.innerHTML='';
+
+ q.a.forEach((answer,index)=>{
+  const button=document.createElement('button');
+  button.textContent=answer;
+  button.addEventListener('click',()=>answerQuestion(index));
+  options.appendChild(button);
+ });
+
+ document.getElementById('questionBox').classList.add('show');
+ document.getElementById('gameMessage').textContent='برای عبور از دروازه، سؤال را حل کن!';
+}
+
+function answerQuestion(index){
+ const q=questions[currentQuestion];
+ const box=document.getElementById('questionBox');
+
+ if(index===q.correct){
+  score+=50;
+  stars+=2;
+  level++;
+  updateStats();
+
+  box.classList.remove('show');
+
+  if(level>questions.length){
+   finishGame(true);
+   return;
+  }
+
+  createLevel();
+  questionActive=false;
+
+  document.getElementById('gameMessage').textContent=
+   'آفرین! دروازه باز شد. وارد مرحله بعد شدی! 🚀';
+
+ }else{
+  document.getElementById('gameMessage').textContent=
+   'این جواب درست نیست. دوباره فکر کن و امتحان کن!';
+ }
+}
+
+function finishGame(won){
+ gameRunning=false;
+
+ document.getElementById('overTitle').textContent=
+  won?'🏆 قهرمان ریاضی شدی!':'✨ بازی تمام شد!';
+
+ document.getElementById('overText').textContent=
+  'امتیاز نهایی: '+score+' | ستاره‌ها: '+stars;
+
+ document.getElementById('gameOver').classList.add('show');
+}
+
+
+/* KEYBOARD */
+
+document.addEventListener('keydown',e=>{
+ if(!document.getElementById('gameOverlay').classList.contains('show'))return;
+
+ if(['ArrowLeft','ArrowRight','ArrowUp',' '].includes(e.key)){
+  e.preventDefault();
+ }
+
+ if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a')keys.left=true;
+ if(e.key==='ArrowRight'||e.key.toLowerCase()==='d')keys.right=true;
+ if(e.key==='ArrowUp'||e.key===' ')keys.jump=true;
+});
+
+document.addEventListener('keyup',e=>{
+ if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a')keys.left=false;
+ if(e.key==='ArrowRight'||e.key.toLowerCase()==='d')keys.right=false;
+});
+
+
+/* MOBILE CONTROLS */
+
+function bindHold(id,key){
+ const button=document.getElementById(id);
+
+ button.addEventListener('pointerdown',e=>{
+  e.preventDefault();
+  keys[key]=true;
+ });
+
+ ['pointerup','pointerleave','pointercancel'].forEach(event=>{
+  button.addEventListener(event,()=>{
+   keys[key]=false;
+  });
  });
 }
 
-$("calculate").addEventListener("click",()=>{
- $("error").textContent="";
- const raw=$("numberInput").value.trim();
- if(raw===""){$("error").textContent="لطفاً ابتدا یک عدد وارد کنید.";return}
- const n=Number(raw);
- if(!Number.isSafeInteger(n)){$("error").textContent="لطفاً یک عدد صحیح و معتبر وارد کنید.";return}
- const selected=[...document.querySelectorAll(".option input:checked")].map(input=>input.value);
- if(!selected.length){$("error").textContent="لطفاً حداقل یک عملیات را انتخاب کنید.";return}
- $("analyzedNumber").textContent=n;
- createAnalysis(n,selected);
- $("results").classList.remove("show");
- void $("results").offsetWidth;
- $("results").classList.add("show");
- $("results").scrollIntoView({behavior:"smooth",block:"start"});
+bindHold('leftBtn','left');
+bindHold('rightBtn','right');
+
+document.getElementById('jumpBtn').addEventListener('pointerdown',e=>{
+ e.preventDefault();
+ keys.jump=true;
 });
 
-$("clearResults").addEventListener("click",()=>{
- $("results").classList.remove("show");
- $("resultsGrid").innerHTML="";
- $("error").textContent="";
-});
-
-$("copyResults").addEventListener("click",async()=>{
- const text=[
-  "NOVA MATH PRO",
-  "عدد: "+$("analyzedNumber").textContent,
-  ...[...$("resultsGrid").children].map(card=>card.innerText)
- ].join("\n\n");
- const button=$("copyResults");
- try{
-  if(navigator.clipboard&&window.isSecureContext){
-   await navigator.clipboard.writeText(text);
-  }else{
-   const textarea=document.createElement("textarea");
-   textarea.value=text;document.body.appendChild(textarea);
-   textarea.select();
-   const success=document.execCommand("copy");
-   textarea.remove();
-   if(!success)throw Error("Copy failed");
-  }
-  button.textContent="✓ کپی شد";
- }catch(e){button.textContent="کپی ناموفق"}
- setTimeout(()=>button.textContent="کپی نتایج",1600);
-});
-
-$("numberInput").addEventListener("keydown",e=>{
- if(e.key==="Enter")$("calculate").click();
-});
-updateOptions();
 </script>
 </body>
 </html>
